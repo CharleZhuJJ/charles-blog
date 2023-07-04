@@ -6,6 +6,7 @@ import themeConfig from "./config/themeConfig";
 export default defineConfig({
   title: "CharlesZhu Blog",
   description: "My Document",
+  base: "/charles-blog/",
   lang: "zh-CN",
   lastUpdated: true,
   markdown,
