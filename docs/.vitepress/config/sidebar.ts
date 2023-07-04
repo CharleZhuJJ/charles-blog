@@ -6,8 +6,8 @@ const sidebar = [
       {
         text: "Spring ",
         items: [
-          { text: "Spring杂叙", link: "/md/java/spring/Spring" },
-          { text: "SpringMvc", link: "/md/java/spring/SpringMVC" },
+          { text: "Spring杂叙", link: "/md/Test/test2/test2test" },
+          { text: "SpringMvc", link: "/md/Java/Spring/SpringMVC" },
           { text: "Spring事务", link: "/md/java/spring/SpringTransaction" },
           { text: "Spring注解", link: "/md/java/spring/SpringAnnotations" },
           { text: "SpringBoot", link: "/md/java/spring/SpringBoot" },
