@@ -42,7 +42,7 @@ List<String> filtered = strings.stream().filter(string->!string.isEmpty()).colle
 
 &emsp; map 会将每一条输入映射为一个新对象。{苹果，梨子}.map(去皮） = {去皮苹果，去皮梨子} 其中： “去皮”函数的类型为：A => B
 
-![map](/public/imgjava/javaOther/java8/Map.png)
+![map](/public/java/javaOther/java8/Map.png)
 
 ```java
 // 例子：使用 map 输出了元素对应的平方数：
@@ -59,7 +59,7 @@ List<Integer> squaresList = numbers.stream().map( i -> i*i).distinct().collect(C
 
 &emsp; flatMap 包含两个操作：会将每一个输入对象输入映射为一个新集合，然后把这些新集合连成一个大集合。 {苹果，梨子}.flatMap(切碎) = {苹果碎片 1，苹果碎片 2，梨子碎片 1，梨子碎片 2} 其中： “切碎”函数的类型为： A => List\<B>
 
-![map](/public/imgjava/javaOther/java8/FlatMap.png)
+![map](/public/java/javaOther/java8/FlatMap.png)
 
 ### 3、filter 方法
 

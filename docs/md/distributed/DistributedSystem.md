@@ -13,4 +13,4 @@
 
 &emsp; 在分布式系统的设计中，没有一种设计可以同时满足一致性，可用性，分区容错性 3 个特性。C、A、P 只能同时满足两个目标，而由于在分布式系统中，P 是必须要保留的，所以要在 C 和 A 间进行取舍。假如要保证服务的可用性，就选择 AP 模型，而要保证一致性的话，就选择 CP 模型。
 
-![CAP](/public/imgdistributed/distributedSystem/CAP.png)
+![CAP](/public/distributed/distributedSystem/CAP.png)

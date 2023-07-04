@@ -20,7 +20,7 @@
 
 &emsp; 所以安装了 JDK，就无需再单独安装 JRE 了。其中的开发工具：编译工具(javac.exe)，打包工具(jar.exe) 等。
 
-![jdk](/public/imgjava/javaOther/java/Jdk.png)
+![jdk](/public/java/javaOther/java/Jdk.png)
 
 ## 面向对象四大特性
 

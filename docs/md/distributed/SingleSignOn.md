@@ -5,12 +5,12 @@
 ### 1、会话机制
 
 &emsp; 浏览器第一次请求服务器，服务器创建一个会话，并将会话的 id 作为响应的一部分发送给浏览器，浏览器存储会话 id，并在后续第二次和第三次请求中带上会话 id，服务器取得请求中的会话 id 就知道是不是同一个用户了，这个过程用下图说明，后续请求与第一次请求产生了关联。
-![SessionMechanism](/public/imgdistributed/singleSignOn/SessionMechanism.png)
+![SessionMechanism](/public/distributed/singleSignOn/SessionMechanism.png)
 
 ### 2、登陆状态
 
 &emsp; 浏览器第一次请求服务器需要输入用户名与密码验证身份，服务器拿到用户名密码去数据库比对，正确的话说明当前持有这个会话的用户是合法用户，应该将这个会话标记为“已授权”或者“已登录”等等之类的状态，既然是会话的状态，自然要保存在会话对象中，tomcat 在会话对象中设置登录状态如下。
-![SignOnStatus](/public/imgdistributed/singleSignOn/SignOnStatus.png)
+![SignOnStatus](/public/distributed/singleSignOn/SignOnStatus.png)
 
 ## 单点登陆
 
@@ -19,7 +19,7 @@
 ### 1、登陆
 
 &emsp; 相比于单系统登录，sso 需要一个独立的认证中心，只有认证中心能接受用户的用户名密码等安全信息，其他系统不提供登录入口，只接受认证中心的间接授权。间接授权通过令牌实现，sso 认证中心验证用户的用户名密码没问题，创建授权令牌，在接下来的跳转过程中，授权令牌作为参数发送给各个子系统，子系统拿到令牌，即得到了授权，可以借此创建局部会话，局部会话登录方式与单系统的登录方式相同。这个过程，也就是单点登录的原理。
-![SingleSignOn](/public/imgdistributed/singleSignOn/SingleSignOn.png)
+![SingleSignOn](/public/distributed/singleSignOn/SingleSignOn.png)
 
 1. 用户访问系统 1 的受保护资源，系统 1 发现用户未登录，跳转至 sso 认证中心，并将自己的地址作为参数
 2. sso 认证中心发现用户未登录，将用户引导至登录页面
@@ -39,7 +39,7 @@
 ### 2、注销
 
 &emsp; 在一个子系统中注销，所有子系统的会话都将被销毁
-![SignOff](/public/imgdistributed/singleSignOn/SignOff.png)
+![SignOff](/public/distributed/singleSignOn/SignOff.png)
 
 &emsp; sso 认证中心一直监听全局会话的状态，一旦全局会话销毁，监听器将通知所有注册系统执行注销操作
 
@@ -53,7 +53,7 @@
 ## 单点登陆部署图
 
 &emsp; 单点登录涉及 sso 认证中心与众子系统，子系统与 sso 认证中心需要通信以交换令牌、校验令牌及发起注销请求，因而子系统必须集成 sso 的客户端，sso 认证中心则是 sso 服务端，整个单点登录过程实质是 sso 客户端与服务端通信的过程
-![SingleSignOnDeployment](/public/imgdistributed/singleSignOn/SingleSignOnDeployment.png)
+![SingleSignOnDeployment](/public/distributed/singleSignOn/SingleSignOnDeployment.png)
 
 ### sso-client 实现的功能
 

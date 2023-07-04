@@ -43,7 +43,7 @@ public String[] selectImports(AnnotationMetadata annotationMetadata) {
 
 &emsp; Spring Boot 通过@EnableAutoConfiguration 开启自动装配，通过 SpringFactoriesLoader 最终加载 META-INF/spring.factories 中的自动配置类实现自动装配，自动配置类其实就是通过@Conditional 按需加载的配置类，想要其生效必须引入 spring-boot-starter-xxx 包实现起步依赖。
 
-![Conditional](/public/imgjava/spring/Conditional.png)
+![Conditional](/public/java/spring/Conditional.png)
 
 ## Springboot 注解
 

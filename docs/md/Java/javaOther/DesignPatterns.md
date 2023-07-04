@@ -84,7 +84,7 @@ public class APP {
 
 &emsp; 这个时候，对于客户端来说，不再需要单独挑选 CPU 厂商、主板厂商、硬盘厂商等，直接选择一家品牌工厂，品牌工厂会负责生产所有的东西，而且能保证肯定是兼容可用的。
 
-![AbstractFactoryPattern](/public/imgjava/javaOther/designPatterns/AbstractFactoryPattern.png)
+![AbstractFactoryPattern](/public/java/javaOther/designPatterns/AbstractFactoryPattern.png)
 
 &emsp; 当然，抽象工厂的问题也是显而易见的，比如我们要加个显示器，就需要修改所有的工厂，给所有的工厂都加上制造显示器的方法。这有点违反了对修改关闭，对扩展开放这个设计原则。
 
@@ -452,7 +452,7 @@ public static void main(String[] args) {
 #### 类适配器模式
 
 &emsp; 看到这个图，大家应该很容易理解的吧，通过继承的方法，适配器自动获得了所需要的大部分方法。这个时候，客户端使用更加简单，直接 Target t = new SomeAdapter(); 就可以了。
-![ClassAdapterpattern.png](/public/imgjava/javaOther/designPatterns/ClassAdapterpattern.png)
+![ClassAdapterpattern.png](/public/java/javaOther/designPatterns/ClassAdapterpattern.png)
 
 ### 3.桥梁模式
 
@@ -608,7 +608,7 @@ public static void main(String[] args) {
 
 #### java IO 中的装饰模式
 
-![javaIoDecorationMode.png](/public/imgjava/javaOther/designPatterns/JavaIoDecorationMode.png)
+![javaIoDecorationMode.png](/public/java/javaOther/designPatterns/JavaIoDecorationMode.png)
 
 ### 5.门面模式
 

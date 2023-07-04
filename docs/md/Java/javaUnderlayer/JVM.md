@@ -4,7 +4,7 @@
 
 ## Java8 内存结构图
 
-![MemorySructure](/public/imgjava/javaUnderlayer/jvm/MemorySructure.png)
+![MemorySructure](/public/java/javaUnderlayer/jvm/MemorySructure.png)
 
 ## 堆内存
 
@@ -17,7 +17,7 @@
 &emsp; 一般情况下，新创建的对象都会被分配到 Eden 区(一些大对象特殊处理)，这些对象经过第一次 Minor GC 后，如果仍然存活，并且能够被另一块 Survivor 区域所容纳，则使用复制算法将这些还存活的对象复制到另一块 Survivor 区域中，然后清理所使用过的 Eden 以及 Survivor 区域，并且将这些对象的年龄+1。对象在 Survivor 区中每熬过一次 Minor GC，年龄就会增加 1 岁，当它的年龄增加到设定的参数值时，就会被移动到年老代中。
 
 &emsp; 老年代：一般都是长生命周期的对象。对于一些较大的对象（即需要分配一块较大的连续内存空间）则直接进入到老年代。可通过启动参数设置来代表超过多大时就不在新生代分配（-XX:PretenureSizeThreshold =1024，单位为字节，默认为 0）
-![HeapMemory](/public/imgjava/javaUnderlayer/jvm/HeapMemory.png)
+![HeapMemory](/public/java/javaUnderlayer/jvm/HeapMemory.png)
 
 ## 方法区
 
@@ -37,7 +37,7 @@
 
 ## 参数内存区域图
 
-![ParameterMemory](/public/imgjava/javaUnderlayer/jvm/ParameterMemory.png)
+![ParameterMemory](/public/java/javaUnderlayer/jvm/ParameterMemory.png)
 
 ### JVM 通用参数设置
 
@@ -130,10 +130,10 @@ jmap -dump:live,format=b,file=heap.bin <pid>
 ### 1、cpu 占用过高
 
 - 1.1、用 top 命令查看 cpu 占用情况
-  ![Top](/public/imgjava/javaUnderlayer/jvm/Top.png)
+  ![Top](/public/java/javaUnderlayer/jvm/Top.png)
 
 - 1.2、用 top -Hp 命令查看线程的情况：（查看具体哪个线程一直占用 CPU，如图显示为 7287 线程）
-  ![TopHp](/public/imgjava/javaUnderlayer/jvm/TopHp.png)
+  ![TopHp](/public/java/javaUnderlayer/jvm/TopHp.png)
 
 - 1.3、把线程号转换为 16 进制
 
@@ -144,17 +144,17 @@ jmap -dump:live,format=b,file=heap.bin <pid>
 ```
 
 - 1.4、用 jstack 工具查看线程栈情况
-  ![Jstack](/public/imgjava/javaUnderlayer/jvm/Jstack.png)
+  ![Jstack](/public/java/javaUnderlayer/jvm/Jstack.png)
   &emsp; 通过 jstack 工具输出现在的线程栈，再通过 grep 命令结合上一步拿到的线程 16 进制的 id 定位到这个线程的运行情况，其中 jstack 后面的 7268 是第（1）步定位到的进程号，grep 后面的是（2）、（3）步定位到的线程号。从输出结果可以看到这个线程处于运行状态，在执行 com.spareyaya.jvm.service.EndlessLoopService.service 这个方法，代码行号是 19 行，这样就可以去到代码的 19 行，找到其所在的代码块，看看是不是处于循环中，这样就定位到了问题。
 
 ### 2、死锁
 
 - 2.1、jps 查看 java 进程
-  ![Jps](/public/imgjava/javaUnderlayer/jvm/Jps.png)
+  ![Jps](/public/java/javaUnderlayer/jvm/Jps.png)
 
 - 2.2、jstack 查看死锁问题
   &emsp; jstack 最大的好处就是会把产生死锁的信息（包含是什么线程产生的）输出到最后，所以我们只需要看最后的内容就行了
-  ![JstackLock](/public/imgjava/javaUnderlayer/jvm/JstackLock.png)
+  ![JstackLock](/public/java/javaUnderlayer/jvm/JstackLock.png)
 
 ### 3、内存泄漏
 
@@ -165,9 +165,9 @@ jmap -dump:live,format=b,file=heap.bin <pid>
 - 3.1、加上运行参数-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=heap.bin，意思是发生 OOM 时把堆内存信息 dump 出来。
 - 3.2、得到 heap.dump 文件，然后我们借助 eclipse 的 MAT 插件来分析
 - 3.3、File->Open Heap Dump... ，然后选择刚才 dump 出来的文件，选择 Leak Suspects
-  ![Mat](/public/imgjava/javaUnderlayer/jvm/Mat.png)
+  ![Mat](/public/java/javaUnderlayer/jvm/Mat.png)
 - 3.4、MAT 会列出所有可能发生内存泄漏的对象：可以看到居然有 21260 个 Thread 对象，3386 个 ThreadPoolExecutor 对象
-  ![MatLeak](/public/imgjava/javaUnderlayer/jvm/MatLeak.png)
+  ![MatLeak](/public/java/javaUnderlayer/jvm/MatLeak.png)
 
 #### 方法二
 

@@ -26,14 +26,14 @@
 - 所有处于就绪状态的 进程 链在一起，称为就绪队列
 - 把所有因等待某事件而处于等待状态的 进程 链在一起就组成各种阻塞队列
 
-![pdbQueue](/public/imgjava/javaOther/thread/PdbQueue.png)
+![pdbQueue](/public/java/javaOther/thread/PdbQueue.png)
 
 ### 2、进程的状态
 
 #### 进程三态
 
 &emsp; 进程的执行期间，至少具备三种基本状态，即运行态、就绪态、阻塞态。
-![processStatus3](/public/imgjava/javaOther/thread/ProcessStatus3.png)
+![processStatus3](/public/java/javaOther/thread/ProcessStatus3.png)
 
 ##### 状态的意义
 
@@ -49,7 +49,7 @@
 #### 进程五态
 
 &emsp; 在三态基础上，做一次细化，出现了另外两个基本状态，创建态和结束态。
-![processStatus5](/public/imgjava/javaOther/thread/ProcessStatus5.png)
+![processStatus5](/public/java/javaOther/thread/ProcessStatus5.png)
 
 ##### 状态的意义
 
@@ -77,7 +77,7 @@
 - 就绪挂起状态：进程在外存（硬盘），但只要进入内存，即刻立刻运行
 
 &emsp; 结合上述的两种挂起态，就组成了进程七态。
-![processStatus7](/public/imgjava/javaOther/thread/ProcessStatus7.png)
+![processStatus7](/public/java/javaOther/thread/ProcessStatus7.png)
 
 ### 3、进程的上下文切换
 
@@ -95,7 +95,7 @@
 &emsp; 进程上下文切换的内容包含用户空间资源（虚拟内存、栈、全局变量等）与内核空间资源（内核堆栈、寄存器等）。
 
 &emsp; 在做上下文切换的时候，会把前一个 进程 的上下文保存到它的 PCB 中，然后加载当前 进程 的 PCB 上下文到 CPU 中，使得进程继续执行
-![contextSwitch](/public/imgjava/javaOther/thread/ContextSwitch.png)
+![contextSwitch](/public/java/javaOther/thread/ContextSwitch.png)
 
 #### 发生进程上下文切换的场景
 
@@ -110,7 +110,7 @@
 &emsp; 系统分配处理器时间资源的基本单元，或者说进程之内独立执行的一个单元执行流。线程——程序执行的最小单位。
 
 &emsp; 进程是最小的资源分配单位，线程是最小的运行单位，一个进程下面能有一个或多个线程，每个线程都有独立一套的寄存器和栈，这样可以确保线程的控制流是相对独立的。
-![thread](/public/imgjava/javaOther/thread/Thread.png)
+![thread](/public/java/javaOther/thread/Thread.png)
 
 ### 线程带来的好处
 
@@ -137,7 +137,7 @@
 
 ### 线程的上下文切换
 
-![threadContextSwitch](/public/imgjava/javaOther/thread/ThreadContextSwitch.png)
+![threadContextSwitch](/public/java/javaOther/thread/ThreadContextSwitch.png)
 
 &emsp; 当进程只有一个线程时，可以认为进程等于线程，线程上下文的切换分两种情况
 
@@ -188,7 +188,7 @@
 
 ### 线程池执行流程
 
-![threadPool](/public/imgjava/javaOther/thread/ThreadPool.png)
+![threadPool](/public/java/javaOther/thread/ThreadPool.png)
 
 ### Executors 工具类
 
@@ -444,7 +444,7 @@ public static void main(String[] args) {
 #### 1、先来先服务算法（First Come First Severd, FCFS）
 
 &emsp; 先来先服务算法简称 F C F S，顾名思义，谁先来，谁先被 C P U 执行，后到的就乖乖排队等待，十分简单的算法，C P U 每次调度 就绪队列 的第一个进程，直到进程退出或阻塞，才会把该进程入队到队尾，然后接着继续调度第一个进程，依此类推。
-![FCFS](/public/imgjava/javaOther/thread/FCFS.png)
+![FCFS](/public/java/javaOther/thread/FCFS.png)
 
 - FCFS 算法看似很公平，但是当一个长作业先运行了，后面的短作业等待的时间就会很长，所以不利于短作业，会降低系统吞吐量。
 - FCFS 对长作业有利，适用于 C P U 繁忙型作业的系统，而不适用于 I/O 繁忙型作业的系统。
@@ -452,14 +452,14 @@ public static void main(String[] args) {
 #### 2、最短作业优先算法（Shortest Job First, SJF）
 
 &emsp; 优先选择运行时间最短的进程，有助于提高系统吞吐量。但是对长作业不利，所以很容易造成一种极端现象。比如，一个 长作业 在就绪队列等待运行，而这个就绪队列有非常多的短作业，最终使得 长作业 不断的往后推，周转时间变长，致使长作业长期不会被运行（适用于 I/O 繁忙型作业的系统）。
-![SJF](/public/imgjava/javaOther/thread/SJF.png)
+![SJF](/public/java/javaOther/thread/SJF.png)
 
 #### 3、3、高响应比优先算法 （Highest Response Ratio Next, HRRN）
 
 &emsp; 因为前面的先进先出算法和最短作业优先算法都没有很好的权衡短作业和长作业，所以高响应比优先算法主要是权衡了短作业和长作业。
 
 &emsp; 每次进行进程调度时，先计算响应比优先权，然后把响应比优先权最高的进程投入运行。
-![HRRN](/public/imgjava/javaOther/thread/HRRN.png)
+![HRRN](/public/java/javaOther/thread/HRRN.png)
 &emsp; 如果两个进程的等待时间相同时，要求的服务时间越短，优先权就越高，这样短作业的进程容易被选中运行（如果等待时间较短，进程的运行时间越短，优先权就会越高 => 等待时间较短的短作业进程）
 
 &emsp; 如果两个进程要求的服务时间相同时，等待时间越长，优先权就越高，这就兼顾到了长作业进程，因为进程的响应比可以随时间等待的增加而提高，当其等待时间足够长时，其响应比便可以升到很高，从而获得运行的机会（如果要求服务时间比较长，进程的等待时间越长，优先权就会越高 => 等待时间较长的长作业进程）
@@ -467,7 +467,7 @@ public static void main(String[] args) {
 #### 4、时间片轮转（Round Robin, RR）算法
 
 &emsp; 时间片轮转是最古老、最简单、最公平且使用最广的算法，给每个进程分配相同时间片（Quantum），允许进程在该时间段中运行。
-![RR](/public/imgjava/javaOther/thread/RR.png)
+![RR](/public/java/javaOther/thread/RR.png)
 
 - 如果时间片用完，进程还在运行，将会把此进程放入就绪队列，并继续调度另外一个进程，依此类推
 - 如果该进程在时间片结束前阻塞或结束，则调度另外一个进程
@@ -497,7 +497,7 @@ public static void main(String[] args) {
 
 - 多级：表示有多个队列，每个队列优先级从高到低，优先级越高的队列拥有的时间片越短
 - 反馈：表示有新的进程进入优先级高的队列时，停止当前运行进程，去运行优先级高的队列
-  ![MFQ](/public/imgjava/javaOther/thread/MFQ.png)
+  ![MFQ](/public/java/javaOther/thread/MFQ.png)
 
 &emsp; 工作流程：
 

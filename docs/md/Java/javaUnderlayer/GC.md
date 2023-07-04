@@ -24,7 +24,7 @@
 - 缺点：引用计数算法问题，相互引用：
   - 比如两个对象循环引用，a 对象引用了 b 对象，b 对象也引用了 a 对象，a、b 对象却没有再被其他对象所引用了，其实正常来说这两个对象已经是垃圾了，因为没有其他对象在使用了，但是计数器内的数值却不是 0，所以引用计数算法就无法回收它们。这种算法是比较直接的找到垃圾，然后去回收，也被称为"直接垃圾收集"。
 
-![CrossReferencing](/public/imgjava/javaUnderlayer/gc/CrossReferencing.png)
+![CrossReferencing](/public/java/javaUnderlayer/gc/CrossReferencing.png)
 
 ### 2、根可达算法
 
@@ -32,7 +32,7 @@
 
 &emsp; root search：如图，根可达算法就可以避免计数器算法不好解决的循环引用问题，Object 6、Object 7、Object 8 彼此之前有引用关系，但是没有与"GC Roots" 相连，那么就会被当做垃圾所回收。
 
-![GcRoot](/public/imgjava/javaUnderlayer/gc/GcRoot.png)
+![GcRoot](/public/java/javaUnderlayer/gc/GcRoot.png)
 
 #### GC Roots
 
@@ -74,7 +74,7 @@
 - 缺点：
   - 标记过程需要扫描整个内存，效率低；标记清除后会产生大量不连续的内存碎片，导致以后在程序运行过程中需要分配较大对象时，无法找到足够的连续内存而不得不提前触发另一次垃圾收集动作。
 
-![MarkSweep](/public/imgjava/javaUnderlayer/gc/MarkSweep.png)
+![MarkSweep](/public/java/javaUnderlayer/gc/MarkSweep.png)
 
 ### 2、复制算法（Mark-Copy）
 
@@ -87,7 +87,7 @@
 - 缺点：
   - 将内存缩小为原来的一半，代价高；当对象存活率较高时需要进行较多的复制操作，效率降低。（复制耗时）
 
-![MarkCopy](/public/imgjava/javaUnderlayer/gc/MarkCopy.png)
+![MarkCopy](/public/java/javaUnderlayer/gc/MarkCopy.png)
 
 ### 3、标记-整理算法（Mark-Compact）
 
@@ -139,7 +139,7 @@
 
 ## GC 收集器及工作区域图
 
-![GcContact](/public/imgjava/javaUnderlayer/gc/GcContact.png)
+![GcContact](/public/java/javaUnderlayer/gc/GcContact.png)
 
 ### 收集器分类
 
@@ -149,22 +149,22 @@
 
 - Serial：用于新生代垃圾收集，复制算法；单线程导致效率慢，但是消耗额外内存最小
 - SerialOld：用于老年代垃圾收集，使用标记整理算法；
-  ![SerialCollector](/public/imgjava/javaUnderlayer/gc/SerialCollector.png)
+  ![SerialCollector](/public/java/javaUnderlayer/gc/SerialCollector.png)
 
 #### 2、并行收集器
 
 &emsp; 通过多线程运行垃圾收集，适合 Server 模式以及多 CPU 环境，适用于吞吐量优先场景。
 
 - PerNewGC：新生代并行处理器，可以和 CMS GC 一起使用；线程数默认与核数相同，可配置
-  ![PerNewGC](/public/imgjava/javaUnderlayer/gc/PerNewGC.png)
+  ![PerNewGC](/public/java/javaUnderlayer/gc/PerNewGC.png)
 - Parallel Scavenge：新生代并行处理器，多线程，并行收集。
 - ParallelOld：老年代收集器，多线程，并行收集。
-  ![Parallel&Old](/public/imgjava/javaUnderlayer/gc/Parallel&Old.png)
+  ![Parallel&Old](/public/java/javaUnderlayer/gc/Parallel&Old.png)
 
 #### 3、并发收集器
 
 - ConcurrentMarkSweep，简称 CMS，即并发标记清除；执行 GC 任务的时候，GC 线程是和应用线程一起工作的，暂停应用时间最少的 Collector，适用于响应时间优先场景。 - 初始标记（initial mark）：STW 快速收集 GC Roots - 并发标记（concurrent mark）：从 GC Roots 出发检测引用链，标记可回收对象；与用户线程并发执行，通过增量更新来避免误回收 - 重新标记（remark）：STW 重新分析被增量更新所收集的 GC Roots - 并发清除（concurrent sweep）：并发清除可回收对象
-  ![ConcurrentCollector](/public/imgjava/javaUnderlayer/gc/ConcurrentCollector.png)
+  ![ConcurrentCollector](/public/java/javaUnderlayer/gc/ConcurrentCollector.png)
 
 #### 4、G1（Garbage First）收集器
 

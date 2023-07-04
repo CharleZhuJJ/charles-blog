@@ -1,6 +1,7 @@
 const sidebar = [
   {
     text: "Java",
+    collapsed: true,
     items: [
       {
         text: "Spring ",
@@ -55,6 +56,7 @@ const sidebar = [
   },
   {
     text: "分布式",
+    collapsed: true,
     items: [
       { text: "单点登陆", link: "/md/distributed/SingleSignOn" },
       { text: "分布式系统", link: "/md/distributed/DistributedSystem" },
@@ -62,7 +64,12 @@ const sidebar = [
   },
   {
     text: "Test",
-    items: [{ text: "testest", link: "/md/Test/test" }],
+    items: [
+      {
+        text: "testest",
+        items: [{ text: "测试嵌套", link: "/md/Test/test2/test2test" }],
+      },
+    ],
   },
 ];
 

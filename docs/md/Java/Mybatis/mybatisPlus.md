@@ -120,7 +120,7 @@ public void testUserList() throws Exception{
 ## Mybatis-plus 的 Sql 注入的原理
 
 1. MP 在启动后会将 BaseMapper 中的一系列的方法注册到 meppedStatements 中；ISqlInjector 负责 SQL 的注入工作，它是一个接口，AbstractSqlInjector 是它的实现类。
-   ![ISsqlInjector](/public/imgjava/mybatis/ISsqlInjector.png)
+   ![ISsqlInjector](/public/java/mybatis/ISsqlInjector.png)
 2. 在 AbstractSqlInjector 中，主要是由 inspectInject()方法进行注入
 
 ```java
@@ -162,7 +162,7 @@ public abstract MappedStatement injectMappedStatement(Class<?> var1, Class<?> va
 ```
 
 4. 该方法的实现，就是 basemapper 中的默认方法
-   ![AbstractMethod](/public/imgjava/mybatis/AbstractMethod.png)
+   ![AbstractMethod](/public/java/mybatis/AbstractMethod.png)
 
 &emsp; 以 SelectById 为例查看：（生成了 SqlSource 对象，再将 SQL 通过 addSelectMappedStatement 方法添加到 meppedStatements 中）
 

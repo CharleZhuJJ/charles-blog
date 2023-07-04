@@ -39,7 +39,7 @@ isOriginal: true
 
 ## spring 模块
 
-![spring模块](/public/imgjava/spring/springModule.png)
+![spring模块](/public/java/spring/springModule.png)
 
 - spring core：提供了框架的基本组成部分，包括控制反转（Inversion of Control，IOC）和依赖注入（Dependency Injection，DI）功能。
 
@@ -98,7 +98,7 @@ isOriginal: true
 
 ### SpringBean 生命周期大致分为 4 个阶段
 
-![springBean生命周期](/public/imgjava/spring/springBean.png)
+![springBean生命周期](/public/java/spring/springBean.png)
 
 #### 1、实例化
 
@@ -668,7 +668,7 @@ class Client {
 
 &emsp; 切面是通知和切点的结合。通知和切点共同定义了切面的全部内容。在 Spring AOP 中，切面可以使用通用类（基于模式的风格） 或者在普通类中以
 @AspectJ 注解来实现
-![Aspect](/public/imgjava/spring/aspect.png)
+![Aspect](/public/java/spring/aspect.png)
 
 ### 注解
 

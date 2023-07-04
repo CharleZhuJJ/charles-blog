@@ -4,15 +4,15 @@
 
 &emsp; 当程序使用某个 Java 类时，JVM 虚拟机会加载它的.class 文件到虚拟机的内存中，负责加载工作的就是类加载器
 
-![JavaLoad](/public/imgjava/javaUnderlayer/classLoader/JavaLoad.png)
+![JavaLoad](/public/java/javaUnderlayer/classLoader/JavaLoad.png)
 
 &emsp; 类加载过程分为加载、验证、准备、解析、初始化，下图是对类加载过程简单的介绍。
-![ClassLoaderProcess](/public/imgjava/javaUnderlayer/classLoader/ClassLoaderProcess.png)
+![ClassLoaderProcess](/public/java/javaUnderlayer/classLoader/ClassLoaderProcess.png)
 
 ### 1. 加载
 
 &emsp; 原理：委托 ClassLoader 读取 Class 二进制字节流，载入到方法区内存，并在堆内存中生成对应的 java.lang.Class 对象相互引用。
-![Load](/public/imgjava/javaUnderlayer/classLoader/Load.png)
+![Load](/public/java/javaUnderlayer/classLoader/Load.png)
 
 ### 2. 验证
 
@@ -39,7 +39,7 @@
 - 启动类加载器（Bootstrap）：加载\<JAVA_HOME>/lib 路径下的核心类库
 - 扩展类加载器（Extension）：加载\<JAVA_HOME>/lib/extl 路径下的
 - 系统类加载器（System）：加载系统类路径 classpath，也就是我们经常用到的 classpath 路径，一般情况该类加载器是程序中默认的类加载器
-  ![ClassLoader](/public/imgjava/javaUnderlayer/classLoader/ClassLoader.png)
+  ![ClassLoader](/public/java/javaUnderlayer/classLoader/ClassLoader.png)
 
 ## 双亲委派机制
 
