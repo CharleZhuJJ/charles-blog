@@ -1,6 +1,6 @@
 # SpringMVC
 
-![springmvc](/public/java/spring/springMvc.png)
+![springmvc](/public/imgjava/spring/springMvc.png)
 
 1. 用户发送请求至前端控制器 (DispatcherServlet)。
 2. DispatcherServlet 收到请求调用 HandlerMapping 处理器映射器。
