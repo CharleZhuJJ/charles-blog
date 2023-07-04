@@ -1,4 +1,4 @@
-import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o as l,c as y,G as A,B as D,z as p,a as i,R as C,A as B,C as F}from"./chunks/framework.ef995079.js";const E="/charles-blog/assets/AbstractFactoryPattern.e3353ca4.png",u="/charles-blog/assets/ClassAdapterpattern.3a6313ee.png",d="/charles-blog/assets/JavaIoDecorationMode.8eec3b26.png",P=JSON.parse('{"title":"浅谈设计模式","description":"","frontmatter":{},"headers":[],"relativePath":"md/Java/javaOther/DesignPatterns.md","filePath":"md/Java/javaOther/DesignPatterns.md","lastUpdated":1688441607000}'),b={name:"md/Java/javaOther/DesignPatterns.md"},g=p("h1",{id:"浅谈设计模式",tabindex:"-1"},[i("浅谈设计模式 "),p("a",{class:"header-anchor",href:"#浅谈设计模式","aria-label":'Permalink to "浅谈设计模式"'},"​")],-1),v=C(`<h2 id="创建型模式" tabindex="-1">创建型模式 <a class="header-anchor" href="#创建型模式" aria-label="Permalink to &quot;创建型模式&quot;">​</a></h2><p>  创建型模式的作用就是创建对象，说到创建一个对象，最熟悉的就是 new 一个对象，然后 set 相关属性。但是，在很多场景下，我们需要给客户端提供更加友好的创建对象的方式，尤其是那种我们定义了类，但是需要提供给其他开发者用的时候。</p><h3 id="_1-简单工厂模式" tabindex="-1">1.简单工厂模式 <a class="header-anchor" href="#_1-简单工厂模式" aria-label="Permalink to &quot;1.简单工厂模式&quot;">​</a></h3><p>  简单地说，简单工厂模式通常就是这样，一个工厂类 XxxFactory，里面有一个静态方法，根据我们不同的参数，返回不同的派生自同一个父类（或实现同一接口）的实例对象。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FoodFactory</span><span style="color:#ADBAC7;"> {</span></span>
+import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o as l,c as y,G as A,B as D,z as p,a as i,R as C,A as B,C as F}from"./chunks/framework.ef995079.js";const E="/charles-blog/assets/AbstractFactoryPattern.e3353ca4.png",u="/charles-blog/assets/ClassAdapterpattern.3a6313ee.png",d="/charles-blog/assets/JavaIoDecorationMode.8eec3b26.png",P=JSON.parse('{"title":"浅谈设计模式","description":"","frontmatter":{},"headers":[],"relativePath":"md/Java/javaOther/DesignPatterns.md","filePath":"md/Java/javaOther/DesignPatterns.md","lastUpdated":1688457292000}'),b={name:"md/Java/javaOther/DesignPatterns.md"},g=p("h1",{id:"浅谈设计模式",tabindex:"-1"},[i("浅谈设计模式 "),p("a",{class:"header-anchor",href:"#浅谈设计模式","aria-label":'Permalink to "浅谈设计模式"'},"​")],-1),v=C(`<h2 id="创建型模式" tabindex="-1">创建型模式 <a class="header-anchor" href="#创建型模式" aria-label="Permalink to &quot;创建型模式&quot;">​</a></h2><p>  创建型模式的作用就是创建对象，说到创建一个对象，最熟悉的就是 new 一个对象，然后 set 相关属性。但是，在很多场景下，我们需要给客户端提供更加友好的创建对象的方式，尤其是那种我们定义了类，但是需要提供给其他开发者用的时候。</p><h3 id="_1-简单工厂模式" tabindex="-1">1.简单工厂模式 <a class="header-anchor" href="#_1-简单工厂模式" aria-label="Permalink to &quot;1.简单工厂模式&quot;">​</a></h3><p>  简单地说，简单工厂模式通常就是这样，一个工厂类 XxxFactory，里面有一个静态方法，根据我们不同的参数，返回不同的派生自同一个父类（或实现同一接口）的实例对象。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FoodFactory</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> Food </span><span style="color:#DCBDFB;">makeFood</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 其中，LanZhouNoodle 和 HuangMenChicken 都继承自 Food。</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">if</span><span style="color:#ADBAC7;"> (name.</span><span style="color:#DCBDFB;">equals</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;noodle&quot;</span><span style="color:#ADBAC7;">)) {</span></span>
@@ -31,7 +31,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_2-工厂模式" tabindex="-1">2.工厂模式 <a class="header-anchor" href="#_2-工厂模式" aria-label="Permalink to &quot;2.工厂模式&quot;">​</a></h3><p>  之所以需要引入工厂模式，是因为我们往往需要使用两个或两个以上的工厂。</p><p>  第一步，我们需要选取合适的工厂，然后第二步基本上和简单工厂一样。</p><p>  核心在于，我们需要在第一步选好我们需要的工厂。比如，我们有 LogFactory 接口，实现类有 FileLogFactory 和 KafkaLogFactory，分别对应将日志写入文件和写入 Kafka 中，显然，我们客户端第一步就需要决定到底要实例化 FileLogFactory 还是 KafkaLogFactory，这将决定之后的所有的操作。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FoodFactory</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    Food </span><span style="color:#DCBDFB;">makeFood</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// ChineseFoodA、ChineseFoodB、AmericanFoodA、AmericanFoodB 都派生自 Food。</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">ChineseFoodFactory</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FoodFactory</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    @</span><span style="color:#F47067;">Override</span></span>
@@ -45,7 +45,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">AmericanFoodFactory</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FoodFactory</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    @</span><span style="color:#F47067;">Override</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> Food </span><span style="color:#DCBDFB;">makeFood</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">) {</span></span>
@@ -58,7 +58,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">APP</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] </span><span style="color:#F69D50;">args</span><span style="color:#ADBAC7;">) {</span></span>
@@ -70,7 +70,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">interface</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodFactory</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    Food </span><span style="color:#6F42C1;">makeFood</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// ChineseFoodA、ChineseFoodB、AmericanFoodA、AmericanFoodB 都派生自 Food。</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ChineseFoodFactory</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodFactory</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    @</span><span style="color:#D73A49;">Override</span></span>
@@ -84,7 +84,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        }</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">AmericanFoodFactory</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodFactory</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    @</span><span style="color:#D73A49;">Override</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> Food </span><span style="color:#6F42C1;">makeFood</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">) {</span></span>
@@ -97,7 +97,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        }</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">APP</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] </span><span style="color:#E36209;">args</span><span style="color:#24292E;">) {</span></span>
@@ -106,7 +106,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 由第一步的工厂产生具体的对象，不同的工厂造出不一样的对象</span></span>
 <span class="line"><span style="color:#24292E;">        Food food </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> factory.</span><span style="color:#6F42C1;">makeFood</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;A&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_3-抽象工厂模式" tabindex="-1">3.抽象工厂模式 <a class="header-anchor" href="#_3-抽象工厂模式" aria-label="Permalink to &quot;3.抽象工厂模式&quot;">​</a></h3><p>  当涉及到这种产品族的问题的时候，就需要抽象工厂模式来支持了。我们不再定义 CPU 工厂、主板工厂、硬盘工厂、显示屏工厂等等，我们直接定义电脑工厂，每个电脑工厂负责生产所有的设备，这样能保证肯定不存在兼容问题。</p><p>  这个时候，对于客户端来说，不再需要单独挑选 CPU厂商、主板厂商、硬盘厂商等，直接选择一家品牌工厂，品牌工厂会负责生产所有的东西，而且能保证肯定是兼容可用的。</p><p><img src="`+E+`" alt="AbstractFactoryPattern"></p><p>  当然，抽象工厂的问题也是显而易见的，比如我们要加个显示器，就需要修改所有的工厂，给所有的工厂都加上制造显示器的方法。这有点违反了对修改关闭，对扩展开放这个设计原则。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_3-抽象工厂模式" tabindex="-1">3.抽象工厂模式 <a class="header-anchor" href="#_3-抽象工厂模式" aria-label="Permalink to &quot;3.抽象工厂模式&quot;">​</a></h3><p>  当涉及到这种产品族的问题的时候，就需要抽象工厂模式来支持了。我们不再定义 CPU 工厂、主板工厂、硬盘工厂、显示屏工厂等等，我们直接定义电脑工厂，每个电脑工厂负责生产所有的设备，这样能保证肯定不存在兼容问题。</p><p>  这个时候，对于客户端来说，不再需要单独挑选 CPU 厂商、主板厂商、硬盘厂商等，直接选择一家品牌工厂，品牌工厂会负责生产所有的东西，而且能保证肯定是兼容可用的。</p><p><img src="`+E+`" alt="AbstractFactoryPattern"></p><p>  当然，抽象工厂的问题也是显而易见的，比如我们要加个显示器，就需要修改所有的工厂，给所有的工厂都加上制造显示器的方法。这有点违反了对修改关闭，对扩展开放这个设计原则。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 第一步就要选定一个“大厂”</span></span>
 <span class="line"><span style="color:#ADBAC7;">    ComputerFactory</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">cf</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">AmdFactory</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 从这个大厂造 CPU</span></span>
@@ -114,8 +114,8 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 从这个大厂造主板</span></span>
 <span class="line"><span style="color:#ADBAC7;">    MainBoard</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">board</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> cf.</span><span style="color:#DCBDFB;">makeMainBoard</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 从这个大厂造硬盘</span></span>
-<span class="line"><span style="color:#ADBAC7;">    HardDisk</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">hardDisk</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> cf.</span><span style="color:#DCBDFB;">makeHardDisk</span><span style="color:#ADBAC7;">(); </span></span>
-<span class="line"><span style="color:#ADBAC7;">   </span></span>
+<span class="line"><span style="color:#ADBAC7;">    HardDisk</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">hardDisk</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> cf.</span><span style="color:#DCBDFB;">makeHardDisk</span><span style="color:#ADBAC7;">();</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#768390;">// 将同一个厂子出来的 CPU、主板、硬盘组装在一起</span></span>
 <span class="line"><span style="color:#ADBAC7;">   Computer</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">result</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Computer</span><span style="color:#ADBAC7;">(cpu, board, hardDisk);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
@@ -126,17 +126,17 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 从这个大厂造主板</span></span>
 <span class="line"><span style="color:#24292E;">    MainBoard board </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> cf.</span><span style="color:#6F42C1;">makeMainBoard</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 从这个大厂造硬盘</span></span>
-<span class="line"><span style="color:#24292E;">    HardDisk hardDisk </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> cf.</span><span style="color:#6F42C1;">makeHardDisk</span><span style="color:#24292E;">(); </span></span>
-<span class="line"><span style="color:#24292E;">   </span></span>
+<span class="line"><span style="color:#24292E;">    HardDisk hardDisk </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> cf.</span><span style="color:#6F42C1;">makeHardDisk</span><span style="color:#24292E;">();</span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#6A737D;">// 将同一个厂子出来的 CPU、主板、硬盘组装在一起</span></span>
 <span class="line"><span style="color:#24292E;">   Computer result </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Computer</span><span style="color:#24292E;">(cpu, board, hardDisk);</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><p>  在Mybatis的运用:SqlSessionFactory工厂类来封装SqlSession的创建过程；</p><p>  在Spring中的运用：BeanFactory就是Bean生成的工厂。一个Spring Bean在生成过程中会经历复杂的一个生命周期，而这些生命周期对于使用者来说是无需关心的，所以就可以将Bean创建过程的逻辑给封装起来，提取出一个Bean的工厂。</p><h3 id="_4-单例模式" tabindex="-1">4.单例模式 <a class="header-anchor" href="#_4-单例模式" aria-label="Permalink to &quot;4.单例模式&quot;">​</a></h3><p>  单例模式是指一个类在一个进程中只有一个实例对象（但也不一定，比如Spring中的Bean的单例是指在一个容器中是单例的）；单例模式创建分为饿汉式和懒汉式。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 饿汉模式</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><p>  在 Mybatis 的运用:SqlSessionFactory 工厂类来封装 SqlSession 的创建过程；</p><p>  在 Spring 中的运用：BeanFactory 就是 Bean 生成的工厂。一个 Spring Bean 在生成过程中会经历复杂的一个生命周期，而这些生命周期对于使用者来说是无需关心的，所以就可以将 Bean 创建过程的逻辑给封装起来，提取出一个 Bean 的工厂。</p><h3 id="_4-单例模式" tabindex="-1">4.单例模式 <a class="header-anchor" href="#_4-单例模式" aria-label="Permalink to &quot;4.单例模式&quot;">​</a></h3><p>  单例模式是指一个类在一个进程中只有一个实例对象（但也不一定，比如 Spring 中的 Bean 的单例是指在一个容器中是单例的）；单例模式创建分为饿汉式和懒汉式。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 饿汉模式</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Singleton</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 首先，将 new Singleton() 堵死</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Singleton</span><span style="color:#ADBAC7;">() {};</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 创建私有静态实例，意味着这个类第一次使用的时候就会进行创建</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> Singleton</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">instance</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Singleton</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> Singleton </span><span style="color:#DCBDFB;">getInstance</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> instance;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
@@ -144,7 +144,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 本来是不想要生成 Singleton 实例的，不过没办法，已经生成了</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> Date </span><span style="color:#DCBDFB;">getDate</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">mode</span><span style="color:#ADBAC7;">) {</span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Date</span><span style="color:#ADBAC7;">();}</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 饱汉模式，懒汉式</span></span>
 <span class="line"><span style="color:#ADBAC7;"> </span><span style="color:#768390;">// volatile关键字的作用：防止重排序。因为创建对象的过程不是原子，大概会分为三个步骤</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 第一步：分配内存空间给Singleton这个对象</span></span>
@@ -158,7 +158,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Singleton</span><span style="color:#ADBAC7;">() {}</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 和饿汉模式相比，这边不需要先实例化出来，注意这里的 volatile，它是必须的</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">volatile</span><span style="color:#ADBAC7;"> Singleton</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">instance</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">null</span><span style="color:#ADBAC7;">;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 双重检查，指的是两次检查 instance 是否为 null。</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// volatile 在这里是需要的</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> Singleton </span><span style="color:#DCBDFB;">getInstance</span><span style="color:#ADBAC7;">() {</span></span>
@@ -174,7 +174,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> instance;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 嵌套类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Singleton3</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Singleton3</span><span style="color:#ADBAC7;">() {}</span></span>
@@ -191,7 +191,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Singleton</span><span style="color:#24292E;">() {};</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 创建私有静态实例，意味着这个类第一次使用的时候就会进行创建</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> Singleton instance </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Singleton</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> Singleton </span><span style="color:#6F42C1;">getInstance</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> instance;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
@@ -199,7 +199,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 本来是不想要生成 Singleton 实例的，不过没办法，已经生成了</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> Date </span><span style="color:#6F42C1;">getDate</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">mode</span><span style="color:#24292E;">) {</span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Date</span><span style="color:#24292E;">();}</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 饱汉模式，懒汉式</span></span>
 <span class="line"><span style="color:#24292E;"> </span><span style="color:#6A737D;">// volatile关键字的作用：防止重排序。因为创建对象的过程不是原子，大概会分为三个步骤</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 第一步：分配内存空间给Singleton这个对象</span></span>
@@ -213,7 +213,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Singleton</span><span style="color:#24292E;">() {}</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 和饿汉模式相比，这边不需要先实例化出来，注意这里的 volatile，它是必须的</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">volatile</span><span style="color:#24292E;"> Singleton instance </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">null</span><span style="color:#24292E;">;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 双重检查，指的是两次检查 instance 是否为 null。</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// volatile 在这里是需要的</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> Singleton </span><span style="color:#6F42C1;">getInstance</span><span style="color:#24292E;">() {</span></span>
@@ -229,7 +229,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> instance;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 嵌套类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Singleton3</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Singleton3</span><span style="color:#24292E;">() {}</span></span>
@@ -240,11 +240,11 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> Singleton3 </span><span style="color:#6F42C1;">getInstance</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> Holder.instance;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_5-建造者模式" tabindex="-1">5.建造者模式 <a class="header-anchor" href="#_5-建造者模式" aria-label="Permalink to &quot;5.建造者模式&quot;">​</a></h3><p>  经常碰见的 XxxBuilder 的类，通常都是建造者模式的产物。</p><p>  Spring中的运用：BeanDefinitionBuilder</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#ADBAC7;">Food</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">food</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">FoodBuilder</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">a</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">b</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">c</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">build</span><span style="color:#ADBAC7;">();</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_5-建造者模式" tabindex="-1">5.建造者模式 <a class="header-anchor" href="#_5-建造者模式" aria-label="Permalink to &quot;5.建造者模式&quot;">​</a></h3><p>  经常碰见的 XxxBuilder 的类，通常都是建造者模式的产物。</p><p>  Spring 中的运用：BeanDefinitionBuilder</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#ADBAC7;">Food</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">food</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">FoodBuilder</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">a</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">b</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">c</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">build</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">Food</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">food</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> Food.</span><span style="color:#DCBDFB;">builder</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">a</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">b</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">c</span><span style="color:#ADBAC7;">().</span><span style="color:#DCBDFB;">build</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#768390;">// 套路就是先 new 一个 Builder，然后可以链式地调用一堆方法，最后再调用一次 build() 方法，我们需要的对象就有了。</span></span>
 <span class="line"><span style="color:#768390;">// 核心是：先把所有的属性都设置给 Builder，然后 build() 方法的时候，将这些属性复制给实际产生的对象。</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 建造者例子：</span></span>
 <span class="line"><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">User</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 下面是“一堆”的属性</span></span>
@@ -252,7 +252,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">password;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">nickName;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">age;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 构造方法私有化，不然客户端就会直接调用构造方法了</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">User</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">, String </span><span style="color:#F69D50;">password</span><span style="color:#ADBAC7;">, String </span><span style="color:#F69D50;">nickName</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">age</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.name </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> name;</span></span>
@@ -260,44 +260,44 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.nickName </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> nickName;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.age </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> age;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;">    </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 静态方法，用于生成一个 Builder，这个不一定要有，不过写这个方法是一个很好的习惯，</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 有些代码要求别人写 new User.UserBuilder().a()...build() 看上去就没那么好</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> UserBuilder </span><span style="color:#DCBDFB;">builder</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">UserBuilder</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">UserBuilder</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 下面是和 User 一模一样的一堆属性</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;">  </span><span style="color:#ADBAC7;">name;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">password;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">nickName;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">age;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">UserBuilder</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 链式调用设置各个属性值，返回 this，即 UserBuilder</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> UserBuilder </span><span style="color:#DCBDFB;">name</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.name </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> name;</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> UserBuilder </span><span style="color:#DCBDFB;">password</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">password</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.password </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> password;</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> UserBuilder </span><span style="color:#DCBDFB;">nickName</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">nickName</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.nickName </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> nickName;</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> UserBuilder </span><span style="color:#DCBDFB;">age</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">age</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.age </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> age;</span></span>
 <span class="line"><span style="color:#ADBAC7;">            </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// build() 方法负责将 UserBuilder 中设置好的属性“复制”到 User 中。</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 当然，可以在 “复制” 之前做点检验</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> User </span><span style="color:#DCBDFB;">build</span><span style="color:#ADBAC7;">() {</span></span>
@@ -315,7 +315,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端调用</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">APP</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] </span><span style="color:#F69D50;">args</span><span style="color:#ADBAC7;">) {</span></span>
@@ -329,7 +329,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">Food food </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> Food.</span><span style="color:#6F42C1;">builder</span><span style="color:#24292E;">().</span><span style="color:#6F42C1;">a</span><span style="color:#24292E;">().</span><span style="color:#6F42C1;">b</span><span style="color:#24292E;">().</span><span style="color:#6F42C1;">c</span><span style="color:#24292E;">().</span><span style="color:#6F42C1;">build</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#6A737D;">// 套路就是先 new 一个 Builder，然后可以链式地调用一堆方法，最后再调用一次 build() 方法，我们需要的对象就有了。</span></span>
 <span class="line"><span style="color:#6A737D;">// 核心是：先把所有的属性都设置给 Builder，然后 build() 方法的时候，将这些属性复制给实际产生的对象。</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 建造者例子：</span></span>
 <span class="line"><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">User</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 下面是“一堆”的属性</span></span>
@@ -337,7 +337,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String password;</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String nickName;</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> age;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 构造方法私有化，不然客户端就会直接调用构造方法了</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">User</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">, String </span><span style="color:#E36209;">password</span><span style="color:#24292E;">, String </span><span style="color:#E36209;">nickName</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">age</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.name </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> name;</span></span>
@@ -345,44 +345,44 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.nickName </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> nickName;</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.age </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> age;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;">    </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 静态方法，用于生成一个 Builder，这个不一定要有，不过写这个方法是一个很好的习惯，</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 有些代码要求别人写 new User.UserBuilder().a()...build() 看上去就没那么好</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> UserBuilder </span><span style="color:#6F42C1;">builder</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">UserBuilder</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">UserBuilder</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 下面是和 User 一模一样的一堆属性</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String  name;</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String password;</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String nickName;</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> age;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">UserBuilder</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 链式调用设置各个属性值，返回 this，即 UserBuilder</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> UserBuilder </span><span style="color:#6F42C1;">name</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.name </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> name;</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">        }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> UserBuilder </span><span style="color:#6F42C1;">password</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">password</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.password </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> password;</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">        }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> UserBuilder </span><span style="color:#6F42C1;">nickName</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">nickName</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.nickName </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> nickName;</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">        }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> UserBuilder </span><span style="color:#6F42C1;">age</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">age</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.age </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> age;</span></span>
 <span class="line"><span style="color:#24292E;">            </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">        }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// build() 方法负责将 UserBuilder 中设置好的属性“复制”到 User 中。</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 当然，可以在 “复制” 之前做点检验</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> User </span><span style="color:#6F42C1;">build</span><span style="color:#24292E;">() {</span></span>
@@ -400,7 +400,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        }</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端调用</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">APP</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] </span><span style="color:#E36209;">args</span><span style="color:#24292E;">) {</span></span>
@@ -414,7 +414,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    Food </span><span style="color:#DCBDFB;">makeChicken</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    Food </span><span style="color:#DCBDFB;">makeNoodle</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FoodServiceImpl</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FoodService</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> Food </span><span style="color:#DCBDFB;">makeChicken</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">         Food</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">f</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Chicken</span><span style="color:#ADBAC7;">()</span></span>
@@ -430,22 +430,22 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> f;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 代理要表现得“就像是”真实实现类，所以需要实现 FoodService</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FoodServiceProxy</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FoodService</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 内部一定要有一个真实的实现类，当然也可以通过构造方法注入</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> FoodService</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">foodService</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">FoodServiceImpl</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> Food </span><span style="color:#DCBDFB;">makeChicken</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;我们马上要开始制作鸡肉了&quot;</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 如果我们定义这句为核心代码的话，那么，核心代码是真实实现类做的，</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 代理只是在核心代码前后做些“无足轻重”的事情</span></span>
 <span class="line"><span style="color:#ADBAC7;">        Food</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">food</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> foodService.</span><span style="color:#DCBDFB;">makeChicken</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;鸡肉制作完成啦，加点胡椒粉&quot;</span><span style="color:#ADBAC7;">); </span><span style="color:#768390;">// 增强</span></span>
 <span class="line"><span style="color:#ADBAC7;">        food.</span><span style="color:#DCBDFB;">addCondiment</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;pepper&quot;</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> food;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> Food </span><span style="color:#DCBDFB;">makeNoodle</span><span style="color:#ADBAC7;">() {</span></span>
@@ -458,7 +458,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    Food </span><span style="color:#6F42C1;">makeChicken</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    Food </span><span style="color:#6F42C1;">makeNoodle</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodServiceImpl</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodService</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> Food </span><span style="color:#6F42C1;">makeChicken</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">         Food f </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Chicken</span><span style="color:#24292E;">()</span></span>
@@ -474,22 +474,22 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> f;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 代理要表现得“就像是”真实实现类，所以需要实现 FoodService</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodServiceProxy</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodService</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 内部一定要有一个真实的实现类，当然也可以通过构造方法注入</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> FoodService foodService </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FoodServiceImpl</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> Food </span><span style="color:#6F42C1;">makeChicken</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;我们马上要开始制作鸡肉了&quot;</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 如果我们定义这句为核心代码的话，那么，核心代码是真实实现类做的，</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 代理只是在核心代码前后做些“无足轻重”的事情</span></span>
 <span class="line"><span style="color:#24292E;">        Food food </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> foodService.</span><span style="color:#6F42C1;">makeChicken</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;鸡肉制作完成啦，加点胡椒粉&quot;</span><span style="color:#24292E;">); </span><span style="color:#6A737D;">// 增强</span></span>
 <span class="line"><span style="color:#24292E;">        food.</span><span style="color:#6F42C1;">addCondiment</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;pepper&quot;</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> food;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> Food </span><span style="color:#6F42C1;">makeNoodle</span><span style="color:#24292E;">() {</span></span>
@@ -498,7 +498,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;制作完成啦&quot;</span><span style="color:#24292E;">)</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> food;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_2-适配器模式" tabindex="-1">2.适配器模式 <a class="header-anchor" href="#_2-适配器模式" aria-label="Permalink to &quot;2.适配器模式&quot;">​</a></h3><p>  适配器模式做的就是，有一个接口需要实现，但是我们现成的对象都不满足，需要加一层适配器来进行适配。</p><p>  适配器模式总体来说分三种：默认适配器模式、对象适配器模式、类适配器模式。</p><p>  适配器使用场景：mybatis，它本身在运行的时候也需要产生日志，但是mybatis框架在设计的时候，无法知道项目中具体使用的是什么框架，所以只能适配各种日志的框架，项目使用什么框架，mybatis就使用什么框架。</p><p>  适配器模式和代理模式的异同：</p><ul><li>比较这两种模式，其实是比较对象适配器模式和代理模式，在代码结构上，它们很相似，都需要一个具体的实现类的实例。但是它们的目的不一样，代理模式做的是增强原方法的活；适配器做的是适配的活，为的是提供“把鸡包装成鸭，然后当做鸭来使用”，而鸡和鸭它们之间原本没有继承关系。</li></ul><h4 id="默认适配器模式" tabindex="-1">默认适配器模式 <a class="header-anchor" href="#默认适配器模式" aria-label="Permalink to &quot;默认适配器模式&quot;">​</a></h4><p>  我们用 Appache commons-io 包中的 FileAlterationListener 做例子：此接口的一大问题是抽象方法太多了，如果我们要用这个接口，意味着我们要实现每一个抽象方法，如果我们只是想要监控文件夹中的文件创建和文件删除事件，可是我们还是不得不实现所有的方法，很明显，这不是我们想要的。</p><p>  所以，我们需要下面一个适配器，它用于实现上面的接口，但是所有的方法都是空方法，我们就可以转而定义自己的类来继承下面这个类即可。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FileAlterationListener</span><span style="color:#ADBAC7;"> {</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_2-适配器模式" tabindex="-1">2.适配器模式 <a class="header-anchor" href="#_2-适配器模式" aria-label="Permalink to &quot;2.适配器模式&quot;">​</a></h3><p>  适配器模式做的就是，有一个接口需要实现，但是我们现成的对象都不满足，需要加一层适配器来进行适配。</p><p>  适配器模式总体来说分三种：默认适配器模式、对象适配器模式、类适配器模式。</p><p>  适配器使用场景：mybatis，它本身在运行的时候也需要产生日志，但是 mybatis 框架在设计的时候，无法知道项目中具体使用的是什么框架，所以只能适配各种日志的框架，项目使用什么框架，mybatis 就使用什么框架。</p><p>  适配器模式和代理模式的异同：</p><ul><li>比较这两种模式，其实是比较对象适配器模式和代理模式，在代码结构上，它们很相似，都需要一个具体的实现类的实例。但是它们的目的不一样，代理模式做的是增强原方法的活；适配器做的是适配的活，为的是提供“把鸡包装成鸭，然后当做鸭来使用”，而鸡和鸭它们之间原本没有继承关系。</li></ul><h4 id="默认适配器模式" tabindex="-1">默认适配器模式 <a class="header-anchor" href="#默认适配器模式" aria-label="Permalink to &quot;默认适配器模式&quot;">​</a></h4><p>  我们用 Appache commons-io 包中的 FileAlterationListener 做例子：此接口的一大问题是抽象方法太多了，如果我们要用这个接口，意味着我们要实现每一个抽象方法，如果我们只是想要监控文件夹中的文件创建和文件删除事件，可是我们还是不得不实现所有的方法，很明显，这不是我们想要的。</p><p>  所以，我们需要下面一个适配器，它用于实现上面的接口，但是所有的方法都是空方法，我们就可以转而定义自己的类来继承下面这个类即可。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FileAlterationListener</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onStart</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> FileAlterationObserver </span><span style="color:#F69D50;">observer</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onDirectoryCreate</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">directory</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onDirectoryChange</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">directory</span><span style="color:#ADBAC7;">);</span></span>
@@ -508,7 +508,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onFileDelete</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">file</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onStop</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> FileAlterationObserver </span><span style="color:#F69D50;">observer</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FileAlterationListenerAdaptor</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FileAlterationListener</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onStart</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> FileAlterationObserver </span><span style="color:#F69D50;">observer</span><span style="color:#ADBAC7;">) {}</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onDirectoryCreate</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">directory</span><span style="color:#ADBAC7;">) {}</span></span>
@@ -519,7 +519,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onFileDelete</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">file</span><span style="color:#ADBAC7;">) {}</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onStop</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> FileAlterationObserver </span><span style="color:#F69D50;">observer</span><span style="color:#ADBAC7;">) {}</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">FileMonitor</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">FileAlterationListenerAdaptor</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">onFileCreate</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">final</span><span style="color:#ADBAC7;"> File </span><span style="color:#F69D50;">file</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 文件创建</span></span>
@@ -539,7 +539,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onFileDelete</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> File </span><span style="color:#E36209;">file</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onStop</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> FileAlterationObserver </span><span style="color:#E36209;">observer</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FileAlterationListenerAdaptor</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FileAlterationListener</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onStart</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> FileAlterationObserver </span><span style="color:#E36209;">observer</span><span style="color:#24292E;">) {}</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onDirectoryCreate</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> File </span><span style="color:#E36209;">directory</span><span style="color:#24292E;">) {}</span></span>
@@ -550,7 +550,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onFileDelete</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> File </span><span style="color:#E36209;">file</span><span style="color:#24292E;">) {}</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onStop</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> FileAlterationObserver </span><span style="color:#E36209;">observer</span><span style="color:#24292E;">) {}</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FileMonitor</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">FileAlterationListenerAdaptor</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">onFileCreate</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">final</span><span style="color:#24292E;"> File </span><span style="color:#E36209;">file</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 文件创建</span></span>
@@ -564,12 +564,12 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">quack</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 鸭的呱呱叫</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">fly</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 飞</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Cock</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">gobble</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 鸡的咕咕叫</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">fly</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 飞</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">WildCock</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Cock</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">gobble</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;咕咕叫&quot;</span><span style="color:#ADBAC7;">);</span></span>
@@ -578,29 +578,29 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;鸡也会飞哦&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 毫无疑问，首先，这个适配器肯定需要 implements Duck，这样才能当做鸭来用</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">CockAdapter</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Duck</span><span style="color:#ADBAC7;"> {</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    Cock</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">cock;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 构造方法中需要一个鸡的实例，此类就是将这只鸡适配成鸭来用</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">CockAdapter</span><span style="color:#ADBAC7;">(Cock </span><span style="color:#F69D50;">cock</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.cock </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> cock;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 实现鸭的呱呱叫方法</span></span>
 <span class="line"><span style="color:#ADBAC7;">    @</span><span style="color:#F47067;">Override</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">quack</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">// 内部其实是一只鸡的咕咕叫</span></span>
 <span class="line"><span style="color:#ADBAC7;">        cock.</span><span style="color:#DCBDFB;">gobble</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">      @</span><span style="color:#F47067;">Override</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">fly</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        cock.</span><span style="color:#DCBDFB;">fly</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 有一只野鸡</span></span>
 <span class="line"><span style="color:#ADBAC7;">      Cock</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">wildCock</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">WildCock</span><span style="color:#ADBAC7;">();</span></span>
@@ -611,12 +611,12 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">quack</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 鸭的呱呱叫</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">fly</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 飞</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">interface</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Cock</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">gobble</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 鸡的咕咕叫</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">fly</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 飞</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">WildCock</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Cock</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">gobble</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;咕咕叫&quot;</span><span style="color:#24292E;">);</span></span>
@@ -625,29 +625,29 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;鸡也会飞哦&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 毫无疑问，首先，这个适配器肯定需要 implements Duck，这样才能当做鸭来用</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">CockAdapter</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Duck</span><span style="color:#24292E;"> {</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    Cock cock;</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 构造方法中需要一个鸡的实例，此类就是将这只鸡适配成鸭来用</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">CockAdapter</span><span style="color:#24292E;">(Cock </span><span style="color:#E36209;">cock</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.cock </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> cock;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 实现鸭的呱呱叫方法</span></span>
 <span class="line"><span style="color:#24292E;">    @</span><span style="color:#D73A49;">Override</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">quack</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">// 内部其实是一只鸡的咕咕叫</span></span>
 <span class="line"><span style="color:#24292E;">        cock.</span><span style="color:#6F42C1;">gobble</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">      @</span><span style="color:#D73A49;">Override</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">fly</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        cock.</span><span style="color:#6F42C1;">fly</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 有一只野鸡</span></span>
 <span class="line"><span style="color:#24292E;">      Cock wildCock </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">WildCock</span><span style="color:#24292E;">();</span></span>
@@ -658,7 +658,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">DrawAPI</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">draw</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">radius</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">x</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">y</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 接口的实现类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">RedPen</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">DrawAPI</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    @</span><span style="color:#F47067;">Override</span></span>
@@ -678,7 +678,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;用蓝色笔画图，radius:&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> radius </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;, x:&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> x </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;, y:&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> y);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 定义一个抽象类，此类的实现类都需要使用 DrawAPI：</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Shape</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> DrawAPI</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">drawAPI;</span></span>
@@ -687,7 +687,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">draw</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 圆形</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Circle</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Shape</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">radius;</span></span>
@@ -712,7 +712,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        drawAPI.</span><span style="color:#DCBDFB;">draw</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">0</span><span style="color:#ADBAC7;">, x, y);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    Shape</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">greenCircle</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Circle</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">10</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">GreenPen</span><span style="color:#ADBAC7;">());</span></span>
@@ -723,7 +723,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">interface</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">DrawAPI</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">draw</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">radius</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">x</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">y</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 接口的实现类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">RedPen</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">DrawAPI</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    @</span><span style="color:#D73A49;">Override</span></span>
@@ -743,7 +743,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;用蓝色笔画图，radius:&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> radius </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;, x:&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> x </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;, y:&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> y);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 定义一个抽象类，此类的实现类都需要使用 DrawAPI：</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Shape</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> DrawAPI drawAPI;</span></span>
@@ -752,7 +752,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">draw</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 圆形</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Circle</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Shape</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> radius;</span></span>
@@ -777,7 +777,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        drawAPI.</span><span style="color:#6F42C1;">draw</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">0</span><span style="color:#24292E;">, x, y);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    Shape greenCircle </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Circle</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">10</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">GreenPen</span><span style="color:#24292E;">());</span></span>
@@ -791,7 +791,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#768390;">// 返回价格</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">double</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">cost</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 基础实现</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">BlackTea</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Beverage</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> String </span><span style="color:#DCBDFB;">getDescription</span><span style="color:#ADBAC7;">() {</span></span>
@@ -809,11 +809,11 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">11</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 装饰者基类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Condiment</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Beverage</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 继承装饰者基类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Lemon</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Condiment</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Beverage</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">bevarage;</span></span>
@@ -831,7 +831,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> beverage.</span><span style="color:#DCBDFB;">cost</span><span style="color:#ADBAC7;">() </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">2</span><span style="color:#ADBAC7;">; </span><span style="color:#768390;">// 加柠檬需要 2 元</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Mango</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Condiment</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Beverage</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">bevarage;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Mango</span><span style="color:#ADBAC7;">(Beverage </span><span style="color:#F69D50;">bevarage</span><span style="color:#ADBAC7;">) {</span></span>
@@ -844,7 +844,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> beverage.</span><span style="color:#DCBDFB;">cost</span><span style="color:#ADBAC7;">() </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">3</span><span style="color:#ADBAC7;">; </span><span style="color:#768390;">// 加芒果需要 3 元</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端：</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 首先，我们需要一个基础饮料，红茶、绿茶或咖啡</span></span>
@@ -852,7 +852,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 开始装饰</span></span>
 <span class="line"><span style="color:#ADBAC7;">    beverage </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Lemon</span><span style="color:#ADBAC7;">(beverage); </span><span style="color:#768390;">// 先加一份柠檬</span></span>
 <span class="line"><span style="color:#ADBAC7;">    beverage </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Mongo</span><span style="color:#ADBAC7;">(beverage); </span><span style="color:#768390;">// 再加一份芒果</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(beverage.</span><span style="color:#DCBDFB;">getDescription</span><span style="color:#ADBAC7;">() </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot; 价格：￥&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> beverage.</span><span style="color:#DCBDFB;">cost</span><span style="color:#ADBAC7;">());</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">//&quot;绿茶, 加柠檬, 加芒果 价格：￥16&quot;</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// 抽象基类</span></span>
@@ -862,7 +862,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#6A737D;">// 返回价格</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">double</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">cost</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 基础实现</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">BlackTea</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Beverage</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> String </span><span style="color:#6F42C1;">getDescription</span><span style="color:#24292E;">() {</span></span>
@@ -880,11 +880,11 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">11</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 装饰者基类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Condiment</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Beverage</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 继承装饰者基类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Lemon</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Condiment</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Beverage bevarage;</span></span>
@@ -902,7 +902,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> beverage.</span><span style="color:#6F42C1;">cost</span><span style="color:#24292E;">() </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">2</span><span style="color:#24292E;">; </span><span style="color:#6A737D;">// 加柠檬需要 2 元</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Mango</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Condiment</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Beverage bevarage;</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Mango</span><span style="color:#24292E;">(Beverage </span><span style="color:#E36209;">bevarage</span><span style="color:#24292E;">) {</span></span>
@@ -915,7 +915,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> beverage.</span><span style="color:#6F42C1;">cost</span><span style="color:#24292E;">() </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">3</span><span style="color:#24292E;">; </span><span style="color:#6A737D;">// 加芒果需要 3 元</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端：</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 首先，我们需要一个基础饮料，红茶、绿茶或咖啡</span></span>
@@ -923,20 +923,20 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 开始装饰</span></span>
 <span class="line"><span style="color:#24292E;">    beverage </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Lemon</span><span style="color:#24292E;">(beverage); </span><span style="color:#6A737D;">// 先加一份柠檬</span></span>
 <span class="line"><span style="color:#24292E;">    beverage </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Mongo</span><span style="color:#24292E;">(beverage); </span><span style="color:#6A737D;">// 再加一份芒果</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(beverage.</span><span style="color:#6F42C1;">getDescription</span><span style="color:#24292E;">() </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot; 价格：￥&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> beverage.</span><span style="color:#6F42C1;">cost</span><span style="color:#24292E;">());</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">//&quot;绿茶, 加柠檬, 加芒果 价格：￥16&quot;</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h4 id="java-io-中的装饰模式" tabindex="-1">java IO 中的装饰模式 <a class="header-anchor" href="#java-io-中的装饰模式" aria-label="Permalink to &quot;java IO 中的装饰模式&quot;">​</a></h4><p><img src="`+d+`" alt="javaIoDecorationMode.png"></p><h3 id="_5-门面模式" tabindex="-1">5.门面模式 <a class="header-anchor" href="#_5-门面模式" aria-label="Permalink to &quot;5.门面模式&quot;">​</a></h3><p>  门面模式（也叫外观模式，Facade Pattern）在许多源码中有使用。</p><p>  门面模式的优点显而易见，客户端不再需要关注实例化时应该使用哪个实现类，直接调用门面提供的方法就可以了，因为门面类提供的方法的方法名对于客户端来说已经很友好了。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">ShapeMaker</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Shape</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">circle;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Shape</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">rectangle;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Shape</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">square;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">ShapeMaker</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">      circle </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Circle</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">      rectangle </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Rectangle</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">      square </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Square</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">  /**</span></span>
 <span class="line"><span style="color:#768390;">   * 下面定义一堆方法，具体应该调用什么方法，由这个门面来决定</span></span>
 <span class="line"><span style="color:#768390;">   */</span></span>
@@ -950,25 +950,25 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">      square.</span><span style="color:#DCBDFB;">draw</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">  ShapeMaker</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">shapeMaker</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">ShapeMaker</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">  </span><span style="color:#768390;">// 客户端调用现在更加清晰了</span></span>
 <span class="line"><span style="color:#ADBAC7;">  shapeMaker.</span><span style="color:#DCBDFB;">drawCircle</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">  shapeMaker.</span><span style="color:#DCBDFB;">drawRectangle</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;">  shapeMaker.</span><span style="color:#DCBDFB;">drawSquare</span><span style="color:#ADBAC7;">();        </span></span>
+<span class="line"><span style="color:#ADBAC7;">  shapeMaker.</span><span style="color:#DCBDFB;">drawSquare</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ShapeMaker</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Shape circle;</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Shape rectangle;</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Shape square;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ShapeMaker</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">      circle </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Circle</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">      rectangle </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Rectangle</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">      square </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Square</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">  /**</span></span>
 <span class="line"><span style="color:#6A737D;">   * 下面定义一堆方法，具体应该调用什么方法，由这个门面来决定</span></span>
 <span class="line"><span style="color:#6A737D;">   */</span></span>
@@ -982,14 +982,14 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">      square.</span><span style="color:#6F42C1;">draw</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">  ShapeMaker shapeMaker </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ShapeMaker</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">  </span><span style="color:#6A737D;">// 客户端调用现在更加清晰了</span></span>
 <span class="line"><span style="color:#24292E;">  shapeMaker.</span><span style="color:#6F42C1;">drawCircle</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">  shapeMaker.</span><span style="color:#6F42C1;">drawRectangle</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;">  shapeMaker.</span><span style="color:#6F42C1;">drawSquare</span><span style="color:#24292E;">();        </span></span>
+<span class="line"><span style="color:#24292E;">  shapeMaker.</span><span style="color:#6F42C1;">drawSquare</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_6-组合模式" tabindex="-1">6.组合模式 <a class="header-anchor" href="#_6-组合模式" aria-label="Permalink to &quot;6.组合模式&quot;">​</a></h3><p>  组合模式用于表示具有层次结构的数据，使得我们对单个对象和组合对象的访问具有一致性。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 每个员工都有姓名、部门、薪水这些属性，同时还有下属员工集合（虽然可能集合为空）</span></span>
 <span class="line"><span style="color:#768390;">// 而下属员工和自己的结构是一样的，也有姓名、部门这些属性，同时也有他们的下属员工集合。</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Employee</span><span style="color:#ADBAC7;"> {</span></span>
@@ -997,29 +997,29 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">dept;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">salary;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> List</span><span style="color:#F69D50;">&lt;</span><span style="color:#F47067;">Employee</span><span style="color:#F69D50;">&gt; </span><span style="color:#ADBAC7;">subordinates; </span><span style="color:#768390;">// 下属</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Employee</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">,String </span><span style="color:#F69D50;">dept</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">sal</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.name </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> name;</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.dept </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> dept;</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.salary </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> sal;</span></span>
 <span class="line"><span style="color:#ADBAC7;">      subordinates </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> ArrayList&lt;</span><span style="color:#F47067;">Employee</span><span style="color:#ADBAC7;">&gt;();</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">add</span><span style="color:#ADBAC7;">(Employee </span><span style="color:#F69D50;">e</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">      subordinates.</span><span style="color:#DCBDFB;">add</span><span style="color:#ADBAC7;">(e);</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">remove</span><span style="color:#ADBAC7;">(Employee </span><span style="color:#F69D50;">e</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">      subordinates.</span><span style="color:#DCBDFB;">remove</span><span style="color:#ADBAC7;">(e);</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> List&lt;</span><span style="color:#F47067;">Employee</span><span style="color:#ADBAC7;">&gt; </span><span style="color:#DCBDFB;">getSubordinates</span><span style="color:#ADBAC7;">(){</span></span>
 <span class="line"><span style="color:#ADBAC7;">     </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> subordinates;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> String </span><span style="color:#DCBDFB;">toString</span><span style="color:#ADBAC7;">(){</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> (</span><span style="color:#96D0FF;">&quot;Employee :[ Name : &quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> name </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;, dept : &quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> dept </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;, salary :&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> salary</span><span style="color:#F47067;">+</span><span style="color:#96D0FF;">&quot; ]&quot;</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;">   }   </span></span>
+<span class="line"><span style="color:#ADBAC7;">   }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// 每个员工都有姓名、部门、薪水这些属性，同时还有下属员工集合（虽然可能集合为空）</span></span>
 <span class="line"><span style="color:#6A737D;">// 而下属员工和自己的结构是一样的，也有姓名、部门这些属性，同时也有他们的下属员工集合。</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Employee</span><span style="color:#24292E;"> {</span></span>
@@ -1027,51 +1027,51 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String dept;</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> salary;</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> List&lt;</span><span style="color:#D73A49;">Employee</span><span style="color:#24292E;">&gt; subordinates; </span><span style="color:#6A737D;">// 下属</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Employee</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">,String </span><span style="color:#E36209;">dept</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">sal</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.name </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> name;</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.dept </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> dept;</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.salary </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> sal;</span></span>
 <span class="line"><span style="color:#24292E;">      subordinates </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> ArrayList&lt;</span><span style="color:#D73A49;">Employee</span><span style="color:#24292E;">&gt;();</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">add</span><span style="color:#24292E;">(Employee </span><span style="color:#E36209;">e</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">      subordinates.</span><span style="color:#6F42C1;">add</span><span style="color:#24292E;">(e);</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">remove</span><span style="color:#24292E;">(Employee </span><span style="color:#E36209;">e</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">      subordinates.</span><span style="color:#6F42C1;">remove</span><span style="color:#24292E;">(e);</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> List&lt;</span><span style="color:#D73A49;">Employee</span><span style="color:#24292E;">&gt; </span><span style="color:#6F42C1;">getSubordinates</span><span style="color:#24292E;">(){</span></span>
 <span class="line"><span style="color:#24292E;">     </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> subordinates;</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> String </span><span style="color:#6F42C1;">toString</span><span style="color:#24292E;">(){</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> (</span><span style="color:#032F62;">&quot;Employee :[ Name : &quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> name </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;, dept : &quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> dept </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;, salary :&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> salary</span><span style="color:#D73A49;">+</span><span style="color:#032F62;">&quot; ]&quot;</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;">   }   </span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_7-享元模式" tabindex="-1">7.享元模式 <a class="header-anchor" href="#_7-享元模式" aria-label="Permalink to &quot;7.享元模式&quot;">​</a></h3><p>  英文是 Flyweight Pattern。Flyweight是轻量级的意思，享元分开来说就是共享元器件，也就是复用已经生成的对象，这种做法当然也就是轻量级的了。</p><p>  复用对象最简单的方式是，用一个 HashMap 来存放每次新生成的对象。每次需要一个对象的时候，先到 HashMap 中看看有没有，如果没有，再生成新的对象，然后将这个对象放入 HashMap 中。</p><h2 id="结构型模式总结" tabindex="-1">结构型模式总结 <a class="header-anchor" href="#结构型模式总结" aria-label="Permalink to &quot;结构型模式总结&quot;">​</a></h2><ul><li>代理模式是做方法增强的；</li><li>适配器模式是把鸡包装成鸭这种用来适配接口的；</li><li>桥梁模式做到了很好的解耦；</li><li>装饰模式从名字上就看得出来，适合于装饰类或者说是增强类的场景；</li><li>门面模式的优点是客户端不需要关心实例化过程，只要调用需要的方法即可；</li><li>组合模式用于描述具有层次结构的数据；</li><li>享元模式是为了在特定的场景中缓存已经创建的对象，用于提高性能。</li></ul><h2 id="行为型模式" tabindex="-1">行为型模式 <a class="header-anchor" href="#行为型模式" aria-label="Permalink to &quot;行为型模式&quot;">​</a></h2><p>  行为型模式关注的是各个类之间的相互作用，将职责划分清楚，使得我们的代码更加地清晰。</p><h3 id="_1-策略模式" tabindex="-1">1.策略模式 <a class="header-anchor" href="#_1-策略模式" aria-label="Permalink to &quot;1.策略模式&quot;">​</a></h3><p>  在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。</p><p>  在策略模式中，我们创建表示各种策略的对象和一个行为随着策略对象改变而改变的 context 对象。策略对象改变 context 对象的执行算法。</p><ul><li>意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。</li><li>主要解决：在有多种算法相似的情况下，使用 if...else 所带来的复杂和难以维护。</li><li>关键代码：实现同一个接口。</li><li>应用实例： 旅行的出游方式，选择骑自行车、坐汽车，每一种旅行方式都是一个策略。</li><li>优点： 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展q性良好。</li><li>缺点： 1、策略类会增多。 2、所有策略类都需要对外暴露。</li></ul><p>  springmvc中的应用：@PathVariable、@RequestParam、@RequestBody等注解，一旦我们使用了注解，SpringMVC会处理注解，从请求中获取到参数，然后再调用接口传递过来，而这个过程，就使用到了策略模式。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// Context上下文角色，也叫Context封装角色</span></span>
+<span class="line"><span style="color:#24292E;">   }</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_7-享元模式" tabindex="-1">7.享元模式 <a class="header-anchor" href="#_7-享元模式" aria-label="Permalink to &quot;7.享元模式&quot;">​</a></h3><p>  英文是 Flyweight Pattern。Flyweight 是轻量级的意思，享元分开来说就是共享元器件，也就是复用已经生成的对象，这种做法当然也就是轻量级的了。</p><p>  复用对象最简单的方式是，用一个 HashMap 来存放每次新生成的对象。每次需要一个对象的时候，先到 HashMap 中看看有没有，如果没有，再生成新的对象，然后将这个对象放入 HashMap 中。</p><h2 id="结构型模式总结" tabindex="-1">结构型模式总结 <a class="header-anchor" href="#结构型模式总结" aria-label="Permalink to &quot;结构型模式总结&quot;">​</a></h2><ul><li>代理模式是做方法增强的；</li><li>适配器模式是把鸡包装成鸭这种用来适配接口的；</li><li>桥梁模式做到了很好的解耦；</li><li>装饰模式从名字上就看得出来，适合于装饰类或者说是增强类的场景；</li><li>门面模式的优点是客户端不需要关心实例化过程，只要调用需要的方法即可；</li><li>组合模式用于描述具有层次结构的数据；</li><li>享元模式是为了在特定的场景中缓存已经创建的对象，用于提高性能。</li></ul><h2 id="行为型模式" tabindex="-1">行为型模式 <a class="header-anchor" href="#行为型模式" aria-label="Permalink to &quot;行为型模式&quot;">​</a></h2><p>  行为型模式关注的是各个类之间的相互作用，将职责划分清楚，使得我们的代码更加地清晰。</p><h3 id="_1-策略模式" tabindex="-1">1.策略模式 <a class="header-anchor" href="#_1-策略模式" aria-label="Permalink to &quot;1.策略模式&quot;">​</a></h3><p>  在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。这种类型的设计模式属于行为型模式。</p><p>  在策略模式中，我们创建表示各种策略的对象和一个行为随着策略对象改变而改变的 context 对象。策略对象改变 context 对象的执行算法。</p><ul><li>意图：定义一系列的算法,把它们一个个封装起来, 并且使它们可相互替换。</li><li>主要解决：在有多种算法相似的情况下，使用 if...else 所带来的复杂和难以维护。</li><li>关键代码：实现同一个接口。</li><li>应用实例： 旅行的出游方式，选择骑自行车、坐汽车，每一种旅行方式都是一个策略。</li><li>优点： 1、算法可以自由切换。 2、避免使用多重条件判断。 3、扩展 q 性良好。</li><li>缺点： 1、策略类会增多。 2、所有策略类都需要对外暴露。</li></ul><p>  springmvc 中的应用：@PathVariable、@RequestParam、@RequestBody 等注解，一旦我们使用了注解，SpringMVC 会处理注解，从请求中获取到参数，然后再调用接口传递过来，而这个过程，就使用到了策略模式。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// Context上下文角色，也叫Context封装角色</span></span>
 <span class="line"><span style="color:#768390;">// 起承上启下的作用，屏蔽高层模块对策略、算法的直接访问，封装可能存在的变化。</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Context</span><span style="color:#ADBAC7;"> {</span></span>
-<span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#768390;">// 维护一个对Strategy对象的引用  </span></span>
+<span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#768390;">// 维护一个对Strategy对象的引用</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> Strategy</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">strategy;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#768390;">// 创建的时候，通过构造函数的对象，选择对应的策略</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#768390;">// 通过构造方法，传入具体的策略</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Context</span><span style="color:#ADBAC7;">(Strategy </span><span style="color:#F69D50;">strategy</span><span style="color:#ADBAC7;">){</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.strategy </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> strategy;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">executeStrategy</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">num1</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">num2</span><span style="color:#ADBAC7;">){</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> strategy.</span><span style="color:#DCBDFB;">doOperation</span><span style="color:#ADBAC7;">(num1, num2);</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// Strategy是策略类，定义每个策略或算法必须具有的方法和属性</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Strategy</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">   </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">doOperation</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">num1</span><span style="color:#ADBAC7;">, </span><span style="color:#F47067;">int</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">num2</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 具体策略类，封装了具体的算法或行为</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">OperationAdd</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Strategy</span><span style="color:#ADBAC7;">{</span></span>
 <span class="line"><span style="color:#ADBAC7;">   @</span><span style="color:#F47067;">Override</span></span>
@@ -1079,33 +1079,33 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> num1 </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> num2;</span></span>
 <span class="line"><span style="color:#ADBAC7;">   }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">  </span><span style="color:#768390;">// 创建的时候，通过构造函数的对象，选择对应的策略</span></span>
-<span class="line"><span style="color:#ADBAC7;">  Context</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">context</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Context</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">OperationAdd</span><span style="color:#ADBAC7;">());    </span></span>
+<span class="line"><span style="color:#ADBAC7;">  Context</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">context</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Context</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">OperationAdd</span><span style="color:#ADBAC7;">());</span></span>
 <span class="line"><span style="color:#ADBAC7;">  System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;10 + 5 = &quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> context.</span><span style="color:#DCBDFB;">executeStrategy</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">10</span><span style="color:#ADBAC7;">, </span><span style="color:#6CB6FF;">5</span><span style="color:#ADBAC7;">));</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// Context上下文角色，也叫Context封装角色</span></span>
 <span class="line"><span style="color:#6A737D;">// 起承上启下的作用，屏蔽高层模块对策略、算法的直接访问，封装可能存在的变化。</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;"> {</span></span>
-<span class="line"><span style="color:#24292E;">   </span><span style="color:#6A737D;">// 维护一个对Strategy对象的引用  </span></span>
+<span class="line"><span style="color:#24292E;">   </span><span style="color:#6A737D;">// 维护一个对Strategy对象的引用</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> Strategy strategy;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#6A737D;">// 创建的时候，通过构造函数的对象，选择对应的策略</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#6A737D;">// 通过构造方法，传入具体的策略</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;">(Strategy </span><span style="color:#E36209;">strategy</span><span style="color:#24292E;">){</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.strategy </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> strategy;</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">executeStrategy</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">num1</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">num2</span><span style="color:#24292E;">){</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> strategy.</span><span style="color:#6F42C1;">doOperation</span><span style="color:#24292E;">(num1, num2);</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// Strategy是策略类，定义每个策略或算法必须具有的方法和属性</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">interface</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Strategy</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">   </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">doOperation</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">num1</span><span style="color:#24292E;">, </span><span style="color:#D73A49;">int</span><span style="color:#24292E;"> </span><span style="color:#E36209;">num2</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 具体策略类，封装了具体的算法或行为</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">OperationAdd</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Strategy</span><span style="color:#24292E;">{</span></span>
 <span class="line"><span style="color:#24292E;">   @</span><span style="color:#D73A49;">Override</span></span>
@@ -1113,10 +1113,10 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> num1 </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> num2;</span></span>
 <span class="line"><span style="color:#24292E;">   }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">  </span><span style="color:#6A737D;">// 创建的时候，通过构造函数的对象，选择对应的策略</span></span>
-<span class="line"><span style="color:#24292E;">  Context context </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">OperationAdd</span><span style="color:#24292E;">());    </span></span>
+<span class="line"><span style="color:#24292E;">  Context context </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">OperationAdd</span><span style="color:#24292E;">());</span></span>
 <span class="line"><span style="color:#24292E;">  System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;10 + 5 = &quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> context.</span><span style="color:#6F42C1;">executeStrategy</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">10</span><span style="color:#24292E;">, </span><span style="color:#005CC5;">5</span><span style="color:#24292E;">));</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_2-观察者模式" tabindex="-1">2.观察者模式 <a class="header-anchor" href="#_2-观察者模式" aria-label="Permalink to &quot;2.观察者模式&quot;">​</a></h3><p>  观察者订阅自己关心的主题和主题有数据变化后通知观察者们。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 定义主题：</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Subject</span><span style="color:#ADBAC7;"> {</span></span>
@@ -1141,13 +1141,13 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 定义观察者接口</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Observer</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> Subject</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">subject;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">update</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 具体的观察者</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">BinaryObserver</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Observer</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 在构造方法中进行订阅主题</span></span>
@@ -1163,7 +1163,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;订阅的数据发生变化，新的数据处理为二进制值为：&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> result);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">HexaObserver</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">Observer</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">HexaObserver</span><span style="color:#ADBAC7;">(Subject </span><span style="color:#F69D50;">subject</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.subject </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> subject;</span></span>
@@ -1175,7 +1175,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;订阅的数据发生变化，新的数据处理为十六进制值为：&quot;</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">+</span><span style="color:#ADBAC7;"> result);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 先定义一个主题</span></span>
@@ -1183,7 +1183,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 定义观察者</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">BinaryObserver</span><span style="color:#ADBAC7;">(subject1);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">HexaObserver</span><span style="color:#ADBAC7;">(subject1);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 模拟数据变更，这个时候，观察者们的 update 方法将会被调用</span></span>
 <span class="line"><span style="color:#ADBAC7;">    subject.</span><span style="color:#DCBDFB;">setState</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">11</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// 定义主题：</span></span>
@@ -1209,13 +1209,13 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        }</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 定义观察者接口</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Observer</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> Subject subject;</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">update</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 具体的观察者</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">BinaryObserver</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Observer</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 在构造方法中进行订阅主题</span></span>
@@ -1231,7 +1231,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;订阅的数据发生变化，新的数据处理为二进制值为：&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> result);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">HexaObserver</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Observer</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">HexaObserver</span><span style="color:#24292E;">(Subject </span><span style="color:#E36209;">subject</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.subject </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> subject;</span></span>
@@ -1243,7 +1243,7 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;订阅的数据发生变化，新的数据处理为十六进制值为：&quot;</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">+</span><span style="color:#24292E;"> result);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 先定义一个主题</span></span>
@@ -1251,25 +1251,25 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 定义观察者</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">BinaryObserver</span><span style="color:#24292E;">(subject1);</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">HexaObserver</span><span style="color:#24292E;">(subject1);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 模拟数据变更，这个时候，观察者们的 update 方法将会被调用</span></span>
 <span class="line"><span style="color:#24292E;">    subject.</span><span style="color:#6F42C1;">setState</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">11</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_3-责任链模式" tabindex="-1">3.责任链模式 <a class="header-anchor" href="#_3-责任链模式" aria-label="Permalink to &quot;3.责任链模式&quot;">​</a></h3><p>  责任链通常需要先建立一个单向链表，然后调用方只需要调用头部节点就可以了，后面会自动流转下去。比如流程审批就是一个很好的例子，只要终端用户提交申请，根据申请的内容信息，自动建立一条责任链，然后就可以开始流转了。</p><p>  有这么一个场景，用户参加一个活动可以领取奖品，但是活动需要进行很多的规则校验然后才能放行，比如首先需要校验用户是否是新用户、今日参与人数是否有限额、全场参与人数是否有限额等等。设定的规则都通过后，才能让用户领走奖品。</p><p>  在SpringMVC中，可以通过使用HandlerInterceptor对每个请求进行拦截。而HandlerInterceptor其实就使用到了责任链模式</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 定义流程上节点的基类</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_3-责任链模式" tabindex="-1">3.责任链模式 <a class="header-anchor" href="#_3-责任链模式" aria-label="Permalink to &quot;3.责任链模式&quot;">​</a></h3><p>  责任链通常需要先建立一个单向链表，然后调用方只需要调用头部节点就可以了，后面会自动流转下去。比如流程审批就是一个很好的例子，只要终端用户提交申请，根据申请的内容信息，自动建立一条责任链，然后就可以开始流转了。</p><p>  有这么一个场景，用户参加一个活动可以领取奖品，但是活动需要进行很多的规则校验然后才能放行，比如首先需要校验用户是否是新用户、今日参与人数是否有限额、全场参与人数是否有限额等等。设定的规则都通过后，才能让用户领走奖品。</p><p>  在 SpringMVC 中，可以通过使用 HandlerInterceptor 对每个请求进行拦截。而 HandlerInterceptor 其实就使用到了责任链模式</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 定义流程上节点的基类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">RuleHandler</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 后继节点</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> RuleHandler</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">successor;</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">apply</span><span style="color:#ADBAC7;">(Context </span><span style="color:#F69D50;">context</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">setSuccessor</span><span style="color:#ADBAC7;">(RuleHandler </span><span style="color:#F69D50;">successor</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.successor </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> successor;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> RuleHandler </span><span style="color:#DCBDFB;">getSuccessor</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> successor;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 定义节点</span></span>
 <span class="line"><span style="color:#768390;">// 校验用户是否是新用户：</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">NewUserRuleHandler</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">RuleHandler</span><span style="color:#ADBAC7;"> {</span></span>
@@ -1310,33 +1310,33 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        }</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    RuleHandler</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">newUserHandler</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">NewUserRuleHandler</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    RuleHandler</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">locationHandler</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">LocationRuleHandler</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">    RuleHandler</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">limitHandler</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">LimitRuleHandler</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 假设本次活动仅校验地区和奖品数量，不校验新老用户</span></span>
 <span class="line"><span style="color:#ADBAC7;">    locationHandler.</span><span style="color:#DCBDFB;">setSuccessor</span><span style="color:#ADBAC7;">(limitHandler);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    locationHandler.</span><span style="color:#DCBDFB;">apply</span><span style="color:#ADBAC7;">(context);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// 定义流程上节点的基类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">RuleHandler</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 后继节点</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> RuleHandler successor;</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">apply</span><span style="color:#24292E;">(Context </span><span style="color:#E36209;">context</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">setSuccessor</span><span style="color:#24292E;">(RuleHandler </span><span style="color:#E36209;">successor</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.successor </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> successor;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> RuleHandler </span><span style="color:#6F42C1;">getSuccessor</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> successor;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 定义节点</span></span>
 <span class="line"><span style="color:#6A737D;">// 校验用户是否是新用户：</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">NewUserRuleHandler</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">RuleHandler</span><span style="color:#24292E;"> {</span></span>
@@ -1377,18 +1377,18 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        }</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    RuleHandler newUserHandler </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">NewUserRuleHandler</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    RuleHandler locationHandler </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">LocationRuleHandler</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">    RuleHandler limitHandler </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">LimitRuleHandler</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 假设本次活动仅校验地区和奖品数量，不校验新老用户</span></span>
 <span class="line"><span style="color:#24292E;">    locationHandler.</span><span style="color:#6F42C1;">setSuccessor</span><span style="color:#24292E;">(limitHandler);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    locationHandler.</span><span style="color:#6F42C1;">apply</span><span style="color:#24292E;">(context);</span></span>
-<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_4-模板方法模式" tabindex="-1">4.模板方法模式 <a class="header-anchor" href="#_4-模板方法模式" aria-label="Permalink to &quot;4.模板方法模式&quot;">​</a></h3><p>  模板方法中定义了调用方法的顺序，其中有抽象方法，子类必须实现它，其实模板方法中有几个抽象方法完全是自由的，我们也可以将三个方法都设置为抽象方法，让子类来实现。也就是说，模板方法只负责定义第一步应该要做什么，第二步应该做什么，第三步应该做什么，至于怎么做，由子类来实现。</p><p>  在Spring中的运用：ApplicationContext在使用之前需要调用一下refresh方法，在整个刷新过程有一个onRefresh方法，onRefresh就是一个模板方法。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 定义抽象类</span></span>
+<span class="line"><span style="color:#24292E;">}</span></span></code></pre></div><h3 id="_4-模板方法模式" tabindex="-1">4.模板方法模式 <a class="header-anchor" href="#_4-模板方法模式" aria-label="Permalink to &quot;4.模板方法模式&quot;">​</a></h3><p>  模板方法中定义了调用方法的顺序，其中有抽象方法，子类必须实现它，其实模板方法中有几个抽象方法完全是自由的，我们也可以将三个方法都设置为抽象方法，让子类来实现。也就是说，模板方法只负责定义第一步应该要做什么，第二步应该做什么，第三步应该做什么，至于怎么做，由子类来实现。</p><p>  在 Spring 中的运用：ApplicationContext 在使用之前需要调用一下 refresh 方法，在整个刷新过程有一个 onRefresh 方法，onRefresh 就是一个模板方法。</p><div class="language-java vp-adaptive-theme"><button title="Copy Code" class="copy"></button><span class="lang">java</span><pre class="shiki github-dark-dimmed vp-code-dark"><code><span class="line"><span style="color:#768390;">// 定义抽象类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">AbstractTemplate</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 这就是模板方法</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">templateMethod</span><span style="color:#ADBAC7;">() {</span></span>
@@ -1396,29 +1396,29 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#DCBDFB;">apply</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 这个是重点</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#DCBDFB;">end</span><span style="color:#ADBAC7;">(); </span><span style="color:#768390;">// 可以作为钩子方法</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">init</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;init 抽象层已经实现，子类也可以选择覆写&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 留给子类实现</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">abstract</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">apply</span><span style="color:#ADBAC7;">();</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">protected</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">end</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 实现类</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">ConcreteTemplate</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">extends</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">AbstractTemplate</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">apply</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;子类实现抽象方法 apply&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">end</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;我们可以把 method3 当做钩子方法来使用，需要的时候覆写就可以了&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    AbstractTemplate</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">t</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">ConcreteTemplate</span><span style="color:#ADBAC7;">();</span></span>
@@ -1432,29 +1432,29 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">apply</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 这个是重点</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6F42C1;">end</span><span style="color:#24292E;">(); </span><span style="color:#6A737D;">// 可以作为钩子方法</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">init</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;init 抽象层已经实现，子类也可以选择覆写&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 留给子类实现</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">abstract</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">apply</span><span style="color:#24292E;">();</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">protected</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">end</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 实现类</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ConcreteTemplate</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">extends</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">AbstractTemplate</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">apply</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;子类实现抽象方法 apply&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">end</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;我们可以把 method3 当做钩子方法来使用，需要的时候覆写就可以了&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    AbstractTemplate t </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">ConcreteTemplate</span><span style="color:#24292E;">();</span></span>
@@ -1464,42 +1464,42 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">interface</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">State</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">doAction</span><span style="color:#ADBAC7;">(Context </span><span style="color:#F69D50;">context</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 实现接口</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">DeductState</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">State</span><span style="color:#ADBAC7;"> {</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">doAction</span><span style="color:#ADBAC7;">(Context </span><span style="color:#F69D50;">context</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;商品卖出，准备减库存&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">        context.</span><span style="color:#DCBDFB;">setState</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">//... 执行减库存的具体操作</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> String </span><span style="color:#DCBDFB;">toString</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;Deduct State&quot;</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;">} </span></span>
+<span class="line"><span style="color:#ADBAC7;">}</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">RevertState</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">implements</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">State</span><span style="color:#ADBAC7;"> {</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">doAction</span><span style="color:#ADBAC7;">(Context </span><span style="color:#F69D50;">context</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        System.out.</span><span style="color:#DCBDFB;">println</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;给此商品补库存&quot;</span><span style="color:#ADBAC7;">);</span></span>
 <span class="line"><span style="color:#ADBAC7;">        context.</span><span style="color:#DCBDFB;">setState</span><span style="color:#ADBAC7;">(</span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#768390;">//... 执行加库存的具体操作</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> String </span><span style="color:#DCBDFB;">toString</span><span style="color:#ADBAC7;">() {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#96D0FF;">&quot;Revert State&quot;</span><span style="color:#ADBAC7;">;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">class</span><span style="color:#ADBAC7;"> </span><span style="color:#F69D50;">Context</span><span style="color:#ADBAC7;"> {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> State</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">state;</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">private</span><span style="color:#ADBAC7;"> String</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">name;</span></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Context</span><span style="color:#ADBAC7;">(String </span><span style="color:#F69D50;">name</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.name </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> name;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">setState</span><span style="color:#ADBAC7;">(State </span><span style="color:#F69D50;">state</span><span style="color:#ADBAC7;">) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.state </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> state;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
@@ -1507,62 +1507,62 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#ADBAC7;">        </span><span style="color:#F47067;">return</span><span style="color:#ADBAC7;"> </span><span style="color:#6CB6FF;">this</span><span style="color:#ADBAC7;">.state;</span></span>
 <span class="line"><span style="color:#ADBAC7;">    }</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#768390;">// 客户端</span></span>
 <span class="line"><span style="color:#F47067;">public</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">static</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">void</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">main</span><span style="color:#ADBAC7;">(</span><span style="color:#F47067;">String</span><span style="color:#ADBAC7;">[] args) {</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 我们需要操作的是 iPhone X</span></span>
 <span class="line"><span style="color:#ADBAC7;">    Context</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">context</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">Context</span><span style="color:#ADBAC7;">(</span><span style="color:#96D0FF;">&quot;iPhone X&quot;</span><span style="color:#ADBAC7;">);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 看看怎么进行补库存操作</span></span>
 <span class="line"><span style="color:#ADBAC7;">      State</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">revertState</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">RevertState</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">      revertState.</span><span style="color:#DCBDFB;">doAction</span><span style="color:#ADBAC7;">(context);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// 同样的，减库存操作也非常简单</span></span>
 <span class="line"><span style="color:#ADBAC7;">      State</span><span style="color:#F69D50;"> </span><span style="color:#ADBAC7;">deductState</span><span style="color:#F69D50;"> </span><span style="color:#F47067;">=</span><span style="color:#ADBAC7;"> </span><span style="color:#F47067;">new</span><span style="color:#ADBAC7;"> </span><span style="color:#DCBDFB;">DeductState</span><span style="color:#ADBAC7;">();</span></span>
 <span class="line"><span style="color:#ADBAC7;">      deductState.</span><span style="color:#DCBDFB;">doAction</span><span style="color:#ADBAC7;">(context);</span></span>
-<span class="line"><span style="color:#ADBAC7;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#ADBAC7;">      </span><span style="color:#768390;">// 如果需要我们可以获取当前的状态</span></span>
 <span class="line"><span style="color:#ADBAC7;">    </span><span style="color:#768390;">// context.getState().toString();</span></span>
 <span class="line"><span style="color:#ADBAC7;">}</span></span></code></pre><pre class="shiki github-light vp-code-light"><code><span class="line"><span style="color:#6A737D;">// 定义状态接口</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">interface</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">State</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">doAction</span><span style="color:#24292E;">(Context </span><span style="color:#E36209;">context</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 实现接口</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">DeductState</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">State</span><span style="color:#24292E;"> {</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">doAction</span><span style="color:#24292E;">(Context </span><span style="color:#E36209;">context</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;商品卖出，准备减库存&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">        context.</span><span style="color:#6F42C1;">setState</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">//... 执行减库存的具体操作</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> String </span><span style="color:#6F42C1;">toString</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;Deduct State&quot;</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;">} </span></span>
+<span class="line"><span style="color:#24292E;">}</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">RevertState</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">implements</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">State</span><span style="color:#24292E;"> {</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">doAction</span><span style="color:#24292E;">(Context </span><span style="color:#E36209;">context</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        System.out.</span><span style="color:#6F42C1;">println</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;给此商品补库存&quot;</span><span style="color:#24292E;">);</span></span>
 <span class="line"><span style="color:#24292E;">        context.</span><span style="color:#6F42C1;">setState</span><span style="color:#24292E;">(</span><span style="color:#005CC5;">this</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#6A737D;">//... 执行加库存的具体操作</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> String </span><span style="color:#6F42C1;">toString</span><span style="color:#24292E;">() {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#032F62;">&quot;Revert State&quot;</span><span style="color:#24292E;">;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">class</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;"> {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> State state;</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">private</span><span style="color:#24292E;"> String name;</span></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;">(String </span><span style="color:#E36209;">name</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.name </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> name;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">setState</span><span style="color:#24292E;">(State </span><span style="color:#E36209;">state</span><span style="color:#24292E;">) {</span></span>
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.state </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> state;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
@@ -1570,20 +1570,20 @@ import{_ as c}from"./chunks/ArticleMetadata.4c626a83.js";import{_ as t,D as r,o 
 <span class="line"><span style="color:#24292E;">        </span><span style="color:#D73A49;">return</span><span style="color:#24292E;"> </span><span style="color:#005CC5;">this</span><span style="color:#24292E;">.state;</span></span>
 <span class="line"><span style="color:#24292E;">    }</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#6A737D;">// 客户端</span></span>
 <span class="line"><span style="color:#D73A49;">public</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">static</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">void</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">main</span><span style="color:#24292E;">(</span><span style="color:#D73A49;">String</span><span style="color:#24292E;">[] args) {</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 我们需要操作的是 iPhone X</span></span>
 <span class="line"><span style="color:#24292E;">    Context context </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">Context</span><span style="color:#24292E;">(</span><span style="color:#032F62;">&quot;iPhone X&quot;</span><span style="color:#24292E;">);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 看看怎么进行补库存操作</span></span>
 <span class="line"><span style="color:#24292E;">      State revertState </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">RevertState</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">      revertState.</span><span style="color:#6F42C1;">doAction</span><span style="color:#24292E;">(context);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// 同样的，减库存操作也非常简单</span></span>
 <span class="line"><span style="color:#24292E;">      State deductState </span><span style="color:#D73A49;">=</span><span style="color:#24292E;"> </span><span style="color:#D73A49;">new</span><span style="color:#24292E;"> </span><span style="color:#6F42C1;">DeductState</span><span style="color:#24292E;">();</span></span>
 <span class="line"><span style="color:#24292E;">      deductState.</span><span style="color:#6F42C1;">doAction</span><span style="color:#24292E;">(context);</span></span>
-<span class="line"><span style="color:#24292E;"> </span></span>
+<span class="line"></span>
 <span class="line"><span style="color:#24292E;">      </span><span style="color:#6A737D;">// 如果需要我们可以获取当前的状态</span></span>
 <span class="line"><span style="color:#24292E;">    </span><span style="color:#6A737D;">// context.getState().toString();</span></span>
 <span class="line"><span style="color:#24292E;">}</span></span></code></pre></div>`,94);function h(s,m,S,q,k,w){const o=c,e=r("ClientOnly");return l(),y("div",null,[g,A(e,null,{default:D(()=>{var n,a;return[(((n=s.$frontmatter)==null?void 0:n.aside)??!0)&&(((a=s.$frontmatter)==null?void 0:a.showArticleMetadata)??!0)?(l(),B(o,{key:0,article:s.$frontmatter},null,8,["article"])):F("",!0)]}),_:1}),v])}const j=t(b,[["render",h]]);export{P as __pageData,j as default};
