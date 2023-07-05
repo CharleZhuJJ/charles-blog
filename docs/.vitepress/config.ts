@@ -13,3 +13,5 @@ export default defineConfig({
   themeConfig,
   head: [],
 });
+
+console.log("222", 222);

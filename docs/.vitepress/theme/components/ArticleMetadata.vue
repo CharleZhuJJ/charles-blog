@@ -38,8 +38,8 @@
   const frontmatter = computed(() => {
     return page.value.frontmatter as FrontMatterProps;
   });
-  console.log("theme", theme);
-  console.log("page", frontmatter);
+  // console.log("theme", theme);
+  // console.log("page", frontmatter);
 </script>
 
 <style lang="less" scoped>

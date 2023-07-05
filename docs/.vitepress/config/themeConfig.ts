@@ -26,5 +26,6 @@ const themeConfig: DefaultTheme.Config = {
     options: algoliaSearchOptions,
   },
 };
+console.log("111", 111);
 
 export default themeConfig;

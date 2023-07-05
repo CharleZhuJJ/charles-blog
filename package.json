@@ -17,6 +17,8 @@
   "dependencies": {
     "@arco-design/web-vue": "^2.47.1",
     "@arco-plugins/vite-vue": "^1.4.5",
+    "fast-glob": "^3.3.0",
+    "gray-matter": "^4.0.3",
     "markdown-it-footnote": "^3.0.3",
     "vue": "^3.3.4"
   }
