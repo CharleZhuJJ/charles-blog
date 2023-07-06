@@ -1,4 +1,5 @@
 import { sync } from "fast-glob";
+import matter from "gray-matter";
 
 const sidebar = [
   // {
@@ -65,29 +66,51 @@ const sidebar = [
   //   ],
   // },
 ];
+
+/**
+ * 根据order排序
+ * @param array
+ * @returns
+ */
+function sortedArray(array) {
+  return array.sort((a, b) => a.order - b.order);
+}
+
+/**
+ * 根据路径名获取目录下所有分类
+ * @param path
+ * @returns
+ */
 function getItemsByPath(path: string) {
-  console.log("path", path);
-  // sync(`docs/${path}/*`, {
-  //   onlyDirectories: true,
-  //   objectMode: true,
-  // }).forEach((file) => {
-  //   console.log("file", file);
-  // });
-  // return [
-  //   { text: "Index", link: "/md/test/" },
-  //   { text: "child1", link: "/md/test/child1" },
-  // ];
-  return [];
+  return sortedArray(
+    sync(`docs/${path}/*`, {
+      objectMode: true,
+    }).map((file) => {
+      const { data } = matter.read(`docs/${path}/${file.name}`);
+      return { ...file, ...data };
+    })
+  ).map((file) => {
+    const filename = file.name.replace(".md", "");
+    return {
+      text: file.title || file.name.replace(".md", ""),
+      link: `/${filename === "index" ? path : `${path}${filename}`}`,
+    };
+  });
 }
 
 const sidebar2 = {
-  "/md/test/": [
+  "/md/Test/": [
     {
       text: "test模块",
-      items: getItemsByPath("/md/test"),
+      items: getItemsByPath("md/Test/"),
+    },
+  ],
+  "/md/distributed/": [
+    {
+      text: "test模块",
+      items: getItemsByPath("md/distributed/"),
     },
   ],
 };
 
-console.log(22222);
 export default sidebar2;

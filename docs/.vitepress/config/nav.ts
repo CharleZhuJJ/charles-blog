@@ -4,12 +4,13 @@ const nav = [
     items: [
       {
         text: "分布式",
-        link: "/",
+        link: "/md/distributed/",
+        activeMatch: "/md/distributed/",
       },
       {
         text: "测试",
-        link: "/md/test/",
-        // activeMatch: "/md/test/",
+        link: "/md/Test/",
+        activeMatch: "/md/Test/", // 匹配sidebar的分类，必须一致！
       },
     ],
     activeMatch: "/md/",
