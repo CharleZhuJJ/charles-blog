@@ -62,9 +62,23 @@ const sidebar = [
   //   collapsed: true,
   //   items: [
   //     { text: "单点登陆", link: "/md/distributed/SingleSignOn" },
-  //     { text: "分布式系统", link: "/md/distributed/DistributedSystem" },
+  //     { text: "分布式系统", link: "/md/distributed/" },
   //   ],
   // },
+  // {
+  //   text: "环境",
+  //   items: [
+  //     {text: "Docker", link: "/md/environment/Docker"},
+  //     {text: "Linux", link: "/md/environment/Linux"},
+  //     {text: "Shell", link: "/md/environment/Shell"}
+  //   ]
+  // },
+  // {
+  //   text: "数据库",
+  //   items: [
+  //     {text: "ELK Stack",link: "/md/database/ElkStack"}
+  //   ]
+  // }
 ];
 
 /**
