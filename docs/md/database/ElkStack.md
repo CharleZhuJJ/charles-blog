@@ -294,9 +294,9 @@ dogs ―> dog
 
 ### es的http操作
 
-#### 索引操作
+#### 1、索引操作
 
-##### 1、创建索引
+##### 1.1、创建索引
 &emsp; 对比关系型数据库，创建索引就等同于创建数据库
 ```shell
 PUT请求：http://127.0.0.1:9200/索引名
@@ -308,7 +308,7 @@ PUT请求：http://127.0.0.1:9200/索引名
     }
 ```    
 
-##### 2、查看所有索引
+##### 1.2、查看所有索引
 &emsp; 类似于MySQL中的show tables
 ```shell 
 GET请求：http://127.0.0.1:9200/_cat/indices?v
@@ -331,7 +331,7 @@ GET请求：http://127.0.0.1:9200/_cat/indices?v
         j) pri.store.size：主分片占空间大小
 ```
 
-##### 3、查看单个索引
+##### 1.3、查看单个索引
 &emsp; 查看索引发送的请求路径和创建索引是一致的。但是HTTP方法不一致
 ```shell
 GET请求：http://127.0.0.1:9200/shopping
@@ -356,14 +356,14 @@ GET请求：http://127.0.0.1:9200/shopping
     }
 ```
 
-##### 4、删除索引
+##### 1.4、删除索引
 ```shell
 DELETE请求 ：http://127.0.0.1:9200/shopping
 ```
 
-#### 文档操作
+#### 2、文档操作
 
-##### 1、创建文档
+##### 2.1、创建文档
 &emsp; 文档可以类比为关系型数据库中的表数据，添加的数据格式为JSON格式
 ```shell
 POST请求：http://127.0.0.1:9200/shopping/_doc 
@@ -386,7 +386,7 @@ POST请求：http://127.0.0.1:9200/shopping/_doc
     POST请求：http://127.0.0.1:9200/shopping/_doc/1  （自定义ID为1）
 ```
 
-##### 2、查看文档
+##### 2.2、查看文档
 &emsp; 需要指明文档的唯一性标识，类似于MySQL中数据的主键查询
 ```shell
 GET请求：http://127.0.0.1:9200/shopping/_doc/1
@@ -408,7 +408,7 @@ GET请求：http://127.0.0.1:9200/shopping/_doc/1
     }
 ```
 
-##### 3、修改文档
+##### 2.3、修改文档
 &emsp; 和新增文档一样，输入相同的URL地址请求，如果请求体变化，会将原有的数据内容覆盖
 ```shell
 POST 请求 ：http://127.0.0.1:9200/shopping/_doc/1
@@ -432,7 +432,7 @@ POST 请求 ：http://127.0.0.1:9200/shopping/_doc/1
 PUT请求： /test_index/_doc/id/_create
 ```
 
-##### 4、修改字段
+##### 2.4、修改字段
 &emsp; 只修改某一给条数据的局部信息
 ```shell
 POST请求 ：http://127.0.0.1:9200/shopping/_update/1
@@ -444,7 +444,7 @@ POST请求 ：http://127.0.0.1:9200/shopping/_update/1
     }
 ```    
 
-##### 5、删除文档
+##### 2.5、删除文档
 &emsp; 删除一个文档不会立即从磁盘上移除，它只是被标记成已删除（逻辑删除）
 ```shell     
 DELETE 请求 ：http://127.0.0.1:9200/shopping/_doc/1
@@ -465,7 +465,7 @@ DELETE 请求 ：http://127.0.0.1:9200/shopping/_doc/1
 }
 ```
 
-##### 6、删除多条文档
+##### 2.6、删除多条文档
 ```shell
 POST 请求 ：http://127.0.0.1:9200/shopping/_delete_by_query
 请求体：
@@ -496,12 +496,12 @@ POST 请求 ：http://127.0.0.1:9200/shopping/_delete_by_query
 }
 ```
 
-#### 映射操作
+#### 3、映射操作
 &emsp; 类似于数据库(database)中的表结构(table)
 
 &emsp; 创建数据库表需要设置字段名称，类型，长度，约束等；索引库也一样，需要知道这个类型下有哪些字段，每个字段有哪些约束信息，这就叫做映射。
 
-##### 1、创建映射
+##### 3.1、创建映射
 ```shell
 PUT 请求 ：http://127.0.0.1:9200/student/_mapping
 请求体：
@@ -535,15 +535,15 @@ PUT 请求 ：http://127.0.0.1:9200/student/_mapping
     5) Object：对象
 ```
 
-##### 2、查看映射
+##### 3.2、查看映射
 ```shell     
 GET 请求 ：http://127.0.0.1:9200/student/_mapping
 ```
 
-#### 高级查询
+#### 4、高级查询
 &emsp; 基于JSON提供完整的查询DSL来定义查询,DSL(Domain Specific Language特定领域语言）
 
-##### 1、查询所有文档(match_all)
+##### 4.1、查询所有文档(match_all)
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
 请求体：
@@ -573,7 +573,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```    
 
-##### 2、匹配查询(match)
+##### 4.2、匹配查询(match)
 &emsp; 把查询条件进行分词，然后进行查询，多个词条之间是or的关系
 ```shell     
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -587,7 +587,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```    
 
-##### 3、字段匹配查询(multi_match)
+##### 4.3、字段匹配查询(multi_match)
 &emsp; 可以在多个字段中查询
 ```shell     
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -602,7 +602,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```
 
-##### 4、关键字精确查询(term)
+##### 4.4、关键字精确查询(term)
 &emsp; 精确的关键词匹配查询，不对查询条件进行分词。
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -617,7 +617,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ``` 
 
-##### 5、多关键字精确查询(terms)
+##### 4.5、多关键字精确查询(terms)
 &emsp; 允许你指定多值进行匹配；如果这个字段包含了指定值中的任何一个值，那么这个文档满足条件，类似于mysql的in）  
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -631,7 +631,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }  
 ```
 
-##### 6、指定查询字段
+##### 4.6、指定查询字段
 &emsp; 默认情况下，会把文档中保存在_source 的所有字段都返回。如果我们只想获取其中的部分字段，我们可以添加_source 的过滤
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -645,7 +645,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```     
 
-##### 7、过滤字段
+##### 4.7、过滤字段
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
 请求体：
@@ -661,7 +661,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }   
 ```
 
-##### 8、组合查询(bool)
+##### 4.8、组合查询(bool)
 &emsp; （`bool`把各种其它查询通过`must`（必须）、`must_not`（必须不）、`should`（应该）的方式进行组合）
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -694,7 +694,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
 }
 ```
 
-##### 9、范围查询(range)
+##### 4.9、范围查询(range)
 &emsp; 查询找出那些落在指定区间内的数字或者时间
 ```shell        
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -711,7 +711,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```        
 
-##### 10、模糊查询
+##### 4.10、模糊查询
 &emsp; 返回包含与搜索字词相似的字词的文档
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -735,7 +735,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
 # 通过 fuzziness 修改编辑距离。一般使用默认值 AUTO，根据术语的长度生成编辑距离。
 ```
 
-##### 11、单字段排序(sort)
+##### 4.11、单字段排序(sort)
 &emsp; 可以让我们按照不同的字段进行排序，并且通过 order指定排序的方式
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -754,7 +754,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```    
 
-##### 12、多字段排序
+##### 4.12、多字段排序
 ```shell     
 GET 请求 ：http://127.0.0.1:9200/student/_search
 请求体：
@@ -777,7 +777,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```
 
-##### 13、高亮查询
+##### 4.13、高亮查询
 &emsp; 对查询内容中的关键字部分，进行标签和样式(高亮)的设置
 ```shell         
 GET 请求 ：http://127.0.0.1:9200/student/_search
@@ -798,7 +798,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }
 ```       
 
-##### 14、分页查询
+##### 4.14、分页查询
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
 请求体：
@@ -823,7 +823,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     工作方式都相同，不同的是每个分片都必须产生顶端的10010个结果。然后请求节点排序这50050个结果并丢弃50040个！
 ```
 
-##### 15、聚合查询
+##### 4.15、聚合查询
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search
 请求体：
@@ -888,7 +888,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }     
 ```
 
-##### 16、桶聚合查询
+##### 4.16、桶聚合查询
 &emsp; 相当于sql中的group by语句
 ```shell
 GET 请求 ：http://127.0.0.1:9200/student/_search    
@@ -905,7 +905,7 @@ GET 请求 ：http://127.0.0.1:9200/student/_search
     }     
 ```    
 
-### 17、exists查询
+##### 4.17、exists查询
 可以用于查找文档中是否包含指定字段或没有某个字段，类似于SQL语句中的IS_NULL条件
 ```shell     
 GET 请求：http://127.0.0.1:9200/student/_search
@@ -917,7 +917,7 @@ GET 请求：http://127.0.0.1:9200/student/_search
     }
 ```
 
-#### 定位错误语法
+#### 5、定位错误语法
 ``` shell
 GET 请求： http://127.0.0.1:9200/book/_validate/query?explain
 请求体：
@@ -930,7 +930,7 @@ GET 请求： http://127.0.0.1:9200/book/_validate/query?explain
     }
 ```        
 
-#### 查看集群状态
+#### 6、查看集群状态
 ```shell         
 GET 请求： http://127.0.0.1:1003/_cluster/health
 返回内容：
@@ -955,3 +955,442 @@ GET 请求： http://127.0.0.1:1003/_cluster/health
         "active_shards_percent_as_number": 100.0
     }       
 ```         
+
+### es的Java api操作（7.8.0）
+#### 1、创建及关闭客户端连接
+```java
+// 创建客户端对象 （9200 端口为 Elasticsearch 的 Web 通信端口，localhost 为启动 ES 服务的主机名）
+RestHighLevelClient client = new RestHighLevelClient(RestClient.builder(new HttpHost("localhost", 9200, "http")));
+// 关闭客户端连接
+client.close();
+```
+
+#### 2、索引操作
+
+##### 2.1、创建索引
+```java
+// 创建索引 - 请求对象
+CreateIndexRequest request = new CreateIndexRequest("user");
+//设置参数
+request.settings(Settings.builder().put("number_of_shards", "1").put("number_of_replicas", "0"));
+//设置别名
+request.alias(new Alias("itheima_index_new"));
+
+// 发送请求，获取响应(同步)
+CreateIndexResponse response = client.indices().create(request, RequestOptions.DEFAULT);
+// 异步
+//监听方法
+ActionListener<CreateIndexResponse> listener = new ActionListener<CreateIndexResponse>() {    
+    @Override
+    public void onResponse(CreateIndexResponse createIndexResponse) {
+        System.out.println("!!!!!!!!创建索引成功");
+        System.out.println(createIndexResponse.toString());
+    }
+    @Override
+    public void onFailure(Exception e) {
+        System.out.println("!!!!!!!!创建索引失败");
+        e.printStackTrace();
+    }
+};
+//执行创建索引库
+CreateIndexResponse response = client.indices().createAsync(createIndexRequest, RequestOptions.DEFAULT, listener);
+```
+
+##### 2.2、查看索引
+```java
+// 查询索引 - 请求对象
+GetIndexRequest request = new GetIndexRequest("user");
+// 发送请求，获取响应
+GetIndexResponse response = client.indices().get(request, RequestOptions.DEFAULT);
+```
+
+##### 2.3、删除索引
+```java
+// 删除索引 - 请求对象
+DeleteIndexRequest request = new DeleteIndexRequest("user");
+// 发送请求，获取响应
+AcknowledgedResponse response = client.indices().delete(request, RequestOptions.DEFAULT);
+```
+
+#### 3、文档操作
+##### 3.1、新增文档
+```java
+// 新增文档 - 请求对象
+IndexRequest request = new IndexRequest();
+// 设置索引及唯一性标识
+request.index("user").id("1001");
+
+// 创建数据对象
+User user = new User();
+user.setName("zhangsan");
+user.setAge(30);
+user.setSex("男");
+ObjectMapper objectMapper = new ObjectMapper();
+String productJson = objectMapper.writeValueAsString(user);
+
+// 添加文档数据，数据格式为 JSON 格式
+request.source(productJson,XContentType.JSON);
+// 客户端发送请求，获取响应对象
+IndexResponse response = client.index(request, RequestOptions.DEFAULT);    
+```
+
+##### 3.2、修改文档
+```java
+// 修改文档 - 请求对象
+UpdateRequest request = new UpdateRequest();
+// 配置修改参数
+request.index("user").id("1001");
+// 设置请求体，对数据进行修改
+request.doc(XContentType.JSON, "sex", "女");
+// 客户端发送请求，获取响应对象
+UpdateResponse response = client.update(request, RequestOptions.DEFAULT);
+```
+
+##### 3.3、查询文档
+```java
+// 创建请求对象
+GetRequest request = new GetRequest().index("user").id("1001");
+// 客户端发送请求，获取响应对象
+GetResponse response = client.get(request, RequestOptions.DEFAULT);
+```
+
+##### 3.4、删除文档
+```java
+//创建请求对象
+DeleteRequest request = new DeleteRequest().index("user").id("1");
+//客户端发送请求，获取响应对象
+DeleteResponse response = client.delete(request, RequestOptions.DEFAULT);
+```
+
+##### 3.5、批量新增
+```java
+//创建批量新增请求对象
+BulkRequest request = new BulkRequest();
+request.add(new IndexRequest().index("user").id("1001").source(XContentType.JSON, "name", "zhangsan"));
+request.add(new IndexRequest().index("user").id("1002").source(XContentType.JSON, "name", "lisi"));
+request.add(new IndexRequest().index("user").id("1003").source(XContentType.JSON, "name", "wangwu"));
+//客户端发送请求，获取响应对象
+BulkResponse responses = client.bulk(request, RequestOptions.DEFAULT);
+```
+
+##### 3.6、批量删除
+```java
+//创建批量删除请求对象
+BulkRequest request = new BulkRequest();
+request.add(new DeleteRequest().index("user").id("1001"));
+request.add(new DeleteRequest().index("user").id("1002"));
+request.add(new DeleteRequest().index("user").id("1003"));
+//客户端发送请求，获取响应对象
+BulkResponse responses = client.bulk(request, RequestOptions.DEFAULT);
+```
+
+#### 4、高级查询
+
+##### 4.1、请求体查询
+
+###### 4.1.1、查询所有索引数据
+```java
+// 创建搜索请求对象
+SearchRequest request = new SearchRequest();
+request.indices("student");
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+// 查询所有数据
+sourceBuilder.query(QueryBuilders.matchAllQuery());
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```  
+
+###### 4.1.2、term 查询，查询条件为关键字
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.query(QueryBuilders.termQuery("age", "30"));
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+###### 4.1.3、分页查询
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.query(QueryBuilders.matchAllQuery());
+// 分页查询
+// 当前页其实索引(第一条数据的顺序号)，from
+sourceBuilder.from(0);
+// 每页显示多少条 size
+sourceBuilder.size(2);
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```  
+
+###### 4.1.4、数据排序
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.query(QueryBuilders.matchAllQuery());
+// 排序
+sourceBuilder.sort("age", SortOrder.ASC);
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+###### 4.1.5、过滤字段
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.query(QueryBuilders.matchAllQuery());
+//查询字段过滤
+String[] excludes = {};
+String[] includes = {"name", "age"};
+sourceBuilder.fetchSource(includes, excludes);
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+ ```   
+
+ ###### 4.1.6、Bool 查询
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+// 必须包含
+boolQueryBuilder.must(QueryBuilders.matchQuery("age", "30"));
+// 一定不含
+boolQueryBuilder.mustNot(QueryBuilders.matchQuery("name", "zhangsan"));
+// 可能包含
+boolQueryBuilder.should(QueryBuilders.matchQuery("sex", "男"));
+sourceBuilder.query(boolQueryBuilder);
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+###### 4.1.7、范围查询
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+RangeQueryBuilder rangeQuery = QueryBuilders.rangeQuery("age");
+// 大于等于
+rangeQuery.gte("30");
+// 小于等于
+rangeQuery.lte("40");
+sourceBuilder.query(rangeQuery);
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+###### 4.1.8、模糊查询
+```java
+// 构建查询的请求体
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.query(QueryBuilders.fuzzyQuery("name","zhangsan").fuzziness(Fuzziness.ONE));
+request.source(sourceBuilder);
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+##### 4.2、高亮查询
+```java
+//创建查询请求体构建器
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+//构建查询方式：高亮查询
+TermsQueryBuilder termsQueryBuilder = QueryBuilders.termsQuery("name","zhangsan");
+//设置查询方式
+sourceBuilder.query(termsQueryBuilder);
+//构建高亮字段
+HighlightBuilder highlightBuilder = new HighlightBuilder();
+highlightBuilder.preTags("<font color='red'>");//设置标签前缀
+highlightBuilder.postTags("</font>");//设置标签后缀
+highlightBuilder.field("name");//设置高亮字段
+//设置高亮构建对象
+sourceBuilder.highlighter(highlightBuilder);
+//设置请求体
+request.source(sourceBuilder);
+//客户端发送请求，获取响应对象
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+##### 4.3、聚合查询
+
+###### 4.3.1、max
+```java
+SearchRequest request = new SearchRequest().indices("student");
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.aggregation(AggregationBuilders.max("maxAge").field("age"));
+//设置请求体
+request.source(sourceBuilder);
+//3.客户端发送请求，获取响应对象
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+ ```   
+
+ ###### 4.3.2、分组统计
+```java
+SearchRequest request = new SearchRequest().indices("student");
+SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+sourceBuilder.aggregation(AggregationBuilders.terms("age_groupby").field("age"));
+//设置请求体
+request.source(sourceBuilder);
+//3.客户端发送请求，获取响应对象
+SearchResponse response = client.search(request, RequestOptions.DEFAULT);
+```
+
+### 零停机重建索引 
+
+#### 背景
+&emsp; 一开始，依靠dynamic mapping，插入数据，但是不小心有些数据是2019-09-10这种日期格式的，所以title这种field被自动映射为了date类型，实际上它应该是string类型的，当后期向索引中加入string类型的title值的时候，就会报错；如果此时想修改title的类型，是不可能的；唯一的办法，就是进行reindex，也就是说，重新建立一个索引，将旧索引的数据查询出来，再导入新索引。
+
+#### 操作
+1. 建立别名，这个别名是指向旧索引的；
+2. 新建一个index，调整映射
+3. 使用scroll api将数据批量查询出来；采用bulk api将scoll查出来的一批数据，批量写入新索引（反复循环执行）
+4. 将第一步新建的别名切换到新的索引上去，直接通过index别名使用新的索引中的数据，java应用程序不需要停机，零提交，高可用
+```java
+// 切换别名
+POST /_aliases
+{
+    "actions": [
+        { "remove": { "index": "my_index", "alias": "prod_index" }},
+        { "add":    { "index": "my_index_new", "alias": "prod_index" }}
+    ]
+}
+```
+
+### es7 sql新特性
+```shell
+POST /_sql?format=txt
+# format(显示方法)  csv,json,tsv,txt,ymal,cbor,smile
+{
+    "query": "SELECT * FROM tvs "
+}
+
+# sql 翻译
+POST /_sql/translate
+{
+    "query": "SELECT * FROM tvs "
+}
+
+# 与其他DSL结合
+POST /_sql?format=txt
+{
+    "query": "SELECT * FROM tvs",
+    "filter": {
+        "range": {
+            "price": {
+                "gte" : 1200,
+                "lte" : 2000
+            }
+        }
+    }
+}
+```
+
+## Kibana
+&emsp; Kibana 是一款开源的数据分析和可视化平台，它是 Elastic Stack 成员之一，设计用于和 Elasticsearch 协作。您可以使用 Kibana 对 Elasticsearch 索引中的数据进行搜索、查看、交互操作。您可以很方便的利用图表、表格及地图对数据进行多元化的分析和呈现。
+```shell
+# 配置安装
+#解压安装包
+    tar -xvf kibana-6.5.4-linux-x86_64.tar.gz
+
+#修改配置文件
+    vim config/kibana.yml
+    server.host: "192.168.40.133" #对外暴露服务的地址
+    elasticsearch.url: "http://192.168.40.133:9200" #配置Elasticsearch
+
+#启动
+    ./bin/kibana
+
+#通过浏览器进行访问
+    http://192.168.40.133:5601/app/kibana
+```
+
+## Logstash
+- Logstash是开源的服务器端数据处理管道，能够同时从多个来源采集数据，转换数据，然后将数据发送到您最喜欢的“存储库”（es）中。
+- logstash是一个数据抽取工具，将数据从一个地方转移到另一个地方。
+- logstash之所以功能强大和流行，还与其丰富的过滤器插件是分不开的，过滤器提供的并不单单是过滤的功能，还可以对进入过滤器的原始数据进行复杂的逻辑处理，甚至添加独特的事件到后续流程中。
+![LogStash](/public/database/elk/LogStash.png)
+
+### 部署安装
+```shell
+#检查jdk环境，要求jdk1.8+
+    
+    java -version
+#解压安装包
+    tar -xvf logstash-6.5.4.tar.gz
+
+#第一个logstash示例
+bin/logstash -e 'input { stdin { } } output { stdout {} }'
+
+# 配置文件启动
+logstash.bat -f ../config/test1.conf
+```
+
+### 配置文件详解
+&emsp; Logstash配置文件有如下三部分组成，其中input、output部分是必须配置，filter部分是可选配置，而filter就是过滤器插件，可以在这部分实现各种日志过滤功能。
+```shell
+input { #输入
+    stdin { ... } #标准输入
+}
+
+filter { #过滤，对数据进行分割、截取等处理
+    ...
+}
+
+output { #输出
+    stdout { ... } #标准输出
+}
+```
+
+#### 输入
+- 采集各种样式、大小和来源的数据，数据往往以各种各样的形式，或分散或集中地存在于很多系统中。
+- Logstash 支持各种输入选择 ，可以在同一时间从众多常用来源捕捉事件。能够以连续的流式传输方式，轻松地从您的日志、指标、Web 应用、数据存储以及各种 AWS 服务采集数据。
+
+#### 过滤
+- 实时解析和转换数据
+- 数据从源传输到存储库的过程中，Logstash 过滤器能够解析各个事件，识别已命名的字段以构建结构，并将它们转换成通用格式，以便更轻松、更快速地分析和实现商业价值。
+
+#### 输出
+- Logstash 提供众多输出选择，您可以将数据发送到您要指定的地方，并且能够灵活地解锁众多下游用例。
+
+#### 示例
+
+##### 读取文件(File)
+```shell
+# 默认情况下，logstash会从文件的结束位置开始读取数据，也就是说logstash进程会以类似tail -f命令的形式逐行获取数据。
+input {
+    file {
+        path => ["/var/*/*"]
+        start_position => "beginning"
+    }
+}
+output {
+    stdout{
+        codec=>rubydebug    # 标准输出
+    }
+}
+```
+
+##### 读取TCP网络数据
+```shell
+input {
+  tcp {
+    port => "1234"
+  }
+}
+
+filter {
+  grok {
+    match => { "message" => "%{SYSLOGLINE}" }
+  }
+}
+
+output {
+    file {
+        path => "/data/log/%{+yyyy-MM-dd}/%{host}_%{+HH}.log"  # 输出到文件
+    }
+}
+
+output {
+    elasticsearch { # 输出到es
+        host => ["192.168.1.1:9200","172.16.213.77:9200"]  # 是一个数组类型的值，后面跟的值是elasticsearch节点的地址与端口，默认端口是9200。可添加多个地址。
+        index => "logstash-%{+YYYY.MM.dd}"   # 写入elasticsearch的索引的名称，这里可以使用变量。
+    }
+}
+```
