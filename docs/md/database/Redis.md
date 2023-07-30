@@ -872,13 +872,13 @@ slave-serve-stale-data yes|no
 ### 心跳机制
 - 进入命令传播阶段候，master与slave间需要进行信息交换，使用心跳机制进行维护，实现双方连接保持在线；
 
-#### master心跳：
+#### master心跳
 - 指令：PING
 - 周期：由repl-ping-slave-period决定，默认10秒
 - 作用：判断slave是否在线
 - 查询：INFO replication，获取slave最后一次连接时间间隔，lag项维持在0或1视为正常
 
-#### slave心跳任务：
+#### slave心跳任务
 - 指令：REPLCONF ACK \{offset}
 - 周期：1秒
 - 作用
@@ -892,3 +892,228 @@ min-slaves-to-write 2
 min-slaves-max-lag 8
 ```
 
+## 哨兵模式
+&emsp; 哨兵(sentinel) 是一个分布式系统，用于对主从结构中的每台服务器进行监控，当出现故障时通过投票机制选择新的master并将所有slave连接到新的master。
+![Sentinel](/public/database/redis/Sentinel.png)
+
+### 哨兵的作用
+- 监控
+    - 不断的检查master和slave是否正常运行。
+    - master存活检测、master与slave运行情况检测
+- 通知（提醒）
+    - 当被监控的服务器出现问题时，向其他（哨兵间，客户端）发送通知。
+- 自动故障转移
+    - 断开master与slave连接，选取一个slave作为master，将其他slave连接到新的master，并告知客户端新的服务器地址
+
+Tips:
+
+&emsp; 哨兵也是一台redis服务器，只是不提供数据服务；通常哨兵配置数量为单数。
+
+### 相关命令
+```shell
+# 启动哨兵
+redis-sentinel sentinel.conf
+
+# 连接服务器口令
+# sentinel auth-pass <服务器名称> <password>
+sentinel auth-pass mymaster itcast
+
+# 设置哨兵监听的主服务器信息，最后一个count的意思是有几台 Sentinel 发现有问题，就会发生故障转移:
+# 例如 配置为2，代表至少有2个 Sentinel 节点认为主节点不可达，那么这个不可达的判定才是客观的。
+# sentinel monitor <自定义服务名称> <主机地址> <端口> <主从服务器总量>
+sentinel monitor mymaster 192.168.194.131 6381 1
+
+# 指定哨兵在监控Redis服务时，判定服务器挂掉的时间周期，默认30秒（30000），也是主从切换的启动条件之一
+# sentinel down-after-milliseconds <服务名称> <毫秒数（整数）>
+sentinel down-after-milliseconds mymaster 3000
+
+# 指定同时进行主从的slave数量，数值越大，要求网络资源越高，要求约小，同步时间约长
+sentinel parallel-syncs <服务名称> <服务器数（整数）>
+sentinel parallel-syncs mymaster 1
+
+# 指定出现故障后，故障切换的最大超时时间，超过该值，认定切换失败，默认3分钟
+sentinel failover-timeout <服务名称> <毫秒数（整数）>
+sentinel failover-timeout mymaster 9000
+```
+
+### 哨兵在进行主从切换过程中经历三个阶段
+- 监控
+    - 同步信息
+- 通知
+    - 保持联通
+- 故障转移
+    - 发现问题
+    - 竞选负责人
+    - 优选新master
+    - 新master上任，其他slave切换master，原master作为slave故障回复后连接
+
+#### 一、监控阶段
+&emsp; 用于同步各个节点的状态信息：
+- 获取各个sentinel的状态（是否在线）
+- 获取master的状态
+    - master属性：（runid，role：master）
+    - 各个slave的详细信息
+- 获取所有slave的状态（根据master中的slave信息）
+    - slave属性（runid，role：slave，master_host、master_port，offset）
+![SentinelPing](/public/database/redis/SentinelPing.png)
+
+#### 二、通知阶段
+![SentinelNotice](/public/database/redis/SentinelNotice.png)
+
+#### 三、故障转移阶段
+&emsp; 当有一台 Sentinel 机器发现问题时，它就会主观对它主观下线，但是当多个 Sentinel 都发现有问题的时候，才会出现客观下线。
+
+&emsp; 主观下线：每个 Sentinel 节点对 Redis 节点失败的“偏见”。之所以是偏见，只是因为某一台机器30秒内没有得到回复。
+
+&emsp; 客观下线：这个时候需要所有 Sentinel 节点都发现它30秒内无回复，才会达到共识。
+
+- 服务器列表中挑选备选master
+    - 在线的
+    - 响应慢的
+    - 与原master断开时间久的
+    - 优先原则：优先级，offset，runid
+- 发送指令（ sentinel ）
+    - 向新的master发送slaveof no one
+    - 向其他slave发送slaveof 新masterIP端口
+
+## redis集群（cluster）
+&emsp; Redis 集群没有使用一致性hash, 而是引入了 哈希槽的概念.
+
+### 哈希槽
+1、Redis 集群有16384个哈希槽，每个key通过CRC16校验后对16384取模来决定放置哪个槽。    
+![HashSlot](/public/database/redis/HashSlot.png)
+&emsp; 集群的每个节点负责一部分hash槽,举个例子,比如当前集群有3个节点,那么：
+- 节点 A 包含 0 到 5500号哈希槽.
+- 节点 B 包含5501 到 11000 号哈希槽.
+- 节点 C 包含11001 到 16384号哈希槽.
+
+&emsp; 这种结构很容易添加或者删除节点。比如如果我想新添加个节点D，我需要从节点 A, B, C中得部分槽到D上。如果我想移除节点A，需要将A中的槽移到B和C节点上，然后将没有任何槽的A节点从集群中移除即可。
+
+&emsp; 由于从一个节点将哈希槽移动到另一个节点并不会停止服务，所以无论添加删除或者改变某个节点的哈希槽的数量都不会造成集群不可用的状态。
+
+### 2、集群内部通讯设计
+- 各个数据库相互通信，保存各个库中槽的编号数据
+- 一次命中，直接返回
+- 一次未命中，告知具体位置
+![ClusterCommunicate](/public/database/redis/ClusterCommunicate.png)
+
+### 相关命令
+```shell
+# cluster配置
+
+# 添加节点
+cluster-enabled yes
+
+# cluster配置文件名，该文件属于自动生成，仅用于快速查找文件并查询文件内容
+cluster-config-file <filename>
+
+# 节点服务响应超时时间，用于判定该节点是否下线或切换为从节点
+cluster-node-timeout <milliseconds>
+
+# master连接的slave最小数量
+cluster-migration-barrier <count>
+```
+
+## Redis潜在风险和问题
+
+### 缓存预热
+&emsp; 缓存预热就是系统启动前，提前将相关的缓存数据直接加载到缓存系统。避免在用户请求的时候，先查询数据库，然后再将数据缓存的问题！用户直接查询事先被预热的缓存数据！
+
+### 缓存雪崩
+&emsp; 指短时间内，缓存中数据大批量到过期时间，而查询数据量巨大，请求都直接访问数据库，引起数据库压力过大甚至down机。
+
+&emsp; 缓存雪崩一般是由于大量数据同时过期造成的，对于这个原因，可通过均匀设置过期时间解决，即让过期时间相对离散一点。如采用一个较大固定值+一个较小的随机值，5小时+0到1800秒酱紫。
+
+&emsp; Redis 故障宕机也可能引起缓存雪崩。这就需要构造Redis高可用集群啦。
+使用断路器，如果缓存宕机，为了防止系统全部宕机，限制部分流量进入数据库，保证部分可用，其余的请求返回断路器的默认值。
+
+### 缓存击穿
+&emsp; 缓存击穿指热点key在某个时间点过期的时候，而恰好在这个时间点对这个Key有大量的并发请求过来，从而大量的请求打到db。
+
+&emsp; 使用互斥锁方案。缓存失效时，不是立即去加载db数据，而是先使用某些带成功返回的原子操作命令，如(Redis的setnx）去操作，成功的时候，再去加载db数据库数据和设置缓存。否则就去重试获取缓存。
+ 
+&emsp; “永不过期”，是指没有设置过期时间，但是热点数据快要过期时，异步线程去更新和设置过期时间。
+
+### 缓存击穿和缓存雪崩的区别
+&emsp; 缓存雪崩是指数据库压力过大甚至down机，缓存击穿只是大量并发请求到了DB数据库层面。可以认为击穿是缓存雪崩的一个子集吧。有些认为它们区别，是区别在于击穿针对某一热点key缓存，雪奔则是很多key。
+
+### 缓存穿透
+&emsp; 查询一个一定不存在的数据，由于缓存是不命中时需要从数据库查询，查不到数据则不写入缓存，这将导致这个不存在的数据每次请求都要到数据库去查询，进而给数据库带来压力。
+
+&emsp; 通俗点说，读请求访问时，缓存和数据库都没有某个值，这样就会导致每次对这个值的查询请求都会穿透到数据库，这就是缓存穿透。
+如果是非法请求，我们在API入口，对参数进行校验，过滤非法值。
+
+&emsp; 如果查询数据库为空，我们可以给缓存设置个空值，或者默认值。但是如有有写请求进来的话，需要更新缓存哈，以保证缓存一致性，同时，最后给缓存设置适当的过期时间。（业务上比较常用，简单有效）
+
+## Redis与客户端通信的方式
+&emsp; RESP (REdis Serialization Protocol)协议，它工作在 TCP 协议的上层，作为我和客户端之间进行通讯的标准形式。
+
+### 客户端发送消息的规则
+```shell
+# 首先解释一下每行末尾的CRLF，转换成程序语言就是\r\n，也就是回车加换行。
+*<参数数量> CRLF
+$<参数1的字节长度> CRLF
+<参数1的数据> CRLF
+$<参数2的字节长度> CRLF
+<参数2的数据> CRLF
+...
+$<参数N的字节长度> CRLF
+<参数N的数据> CRLF
+
+示例：
+set key1 value1
+--------------
+*3
+$3
+set
+$4
+key1
+$6
+value1
+```
+
+### 服务端指令回复
+#### 1、简单字符串
+&emsp; 简单字符串回复只有一行回复，回复的内容以+作为开头，不允许换行，并以\r\n结束。有很多指令在执行成功后只会回复一个OK，使用的就是这种格式，能够有效的将传输、解析的开销降到最低。
+```shell
+# set key value
++OK\r\n
+```
+
+#### 2、错误回复
+&emsp; 在RESP协议中，错误回复可以当做简单字符串回复的变种形式，它们之间的格式也非常类似，区别只有第一个字符是以-作为开头，错误回复的内容通常是错误类型及对错误描述的字符串。
+
+&emsp; 错误回复出现在一些异常的场景，例如当发送了错误的指令、操作数的数量不对时，都会进行错误回复。在客户端收到错误回复后，会将它与简单字符串回复进行区分，视为异常。
+```shell
+# let dirnk
+-ERR unknown command 'let drink', with args begining with:\r\n
+```
+
+#### 3、整数回复
+&emsp; 整数回复的应用也非常广泛，它以:作为开头，以\r\n结束，用于返回一个整数。例如当执行incr后返回自增后的值，执行llen返回数组的长度，或者使用exists命令返回的0或1作为判断一个key是否存在的依据，这些都使用了整数回复。
+```shell
+# incr key
+:2\r\n
+```
+
+#### 4、批量回复
+&emsp; 批量回复，就是多行字符串的回复。它以$作为开头，后面是发送的字节长度，然后是\r\n，然后发送实际的数据，最终以\r\n结束。如果要回复的数据不存在，那么回复长度为-1。
+```shell
+# get key  存在数据
+$7\r\n
+myvalue\r\n
+
+# get otherKey 不存在数据
+$-1\r\n
+```
+
+#### 5、多条批量回复
+&emsp; 当服务端要返回多个值时，例如返回一些元素的集合时，就会使用多条批量回复。它以*作为开头，后面是返回元素的个数，之后再跟随多个上面讲到过的批量回复。
+```shell
+# lrange myarray 0 -1  只要m1和m2两个元素
+*2\r\n
+$2\r\n
+m1\r\n
+$2\r\n
+m2\r\n
+```
