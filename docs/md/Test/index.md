@@ -1,5 +1,5 @@
 ---
-title: "home"
+title: "homeTitle"
 order: 1
 ---
 

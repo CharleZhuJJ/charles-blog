@@ -1,5 +1,5 @@
 ---
-title: "child1"
+title: "child1Title"
 order: 2
 ---
 

@@ -1,7 +1,7 @@
 import { sync } from "fast-glob";
 import matter from "gray-matter";
 
-const sidebar = [
+const sidebar2 = [
   // {
   //   text: "Java",
   //   collapsed: true,
@@ -95,36 +95,46 @@ function sortedArray(array) {
  * @param path
  * @returns
  */
-function getItemsByPath(path: string) {
-  return sortedArray(
-    sync(`docs/${path}/*`, {
+function getItemsByPath(path: string, result: any[] = []) {
+  sortedArray(
+    sync(`${path}*`, {
       objectMode: true,
-    }).map((file) => {
-      const { data } = matter.read(`docs/${path}/${file.name}`);
-      return { ...file, ...data };
+      onlyFiles: false,
+      stats: true,
     })
-  ).map((file) => {
-    const filename = file.name.replace(".md", "");
-    return {
-      text: file.title || file.name.replace(".md", ""),
-      link: `/${filename === "index" ? path : `${path}${filename}`}`,
-    };
+  ).forEach((file) => {
+    const fileData: any = {};
+    if (file.stats?.isFile()) {
+      const { data } = matter.read(`${path}${file.name}`);
+      const filename = file.name.replace(".md", "");
+      fileData.text = data.title;
+      fileData.link = `/${
+        filename === "index" ? path : `${path}${filename}`
+      }`.replace("docs/", "");
+    } else {
+      // 文件夹
+      fileData.text = file.name;
+      fileData.items = getItemsByPath(`${file.path}/`, []);
+    }
+    result.push(fileData);
   });
+  return result;
 }
 
-const sidebar2 = {
+const sidebar = {
   "/md/Test/": [
     {
       text: "test模块",
-      items: getItemsByPath("md/Test/"),
+      items: getItemsByPath("docs/md/Test/"),
     },
   ],
-  "/md/distributed/": [
-    {
-      text: "test模块",
-      items: getItemsByPath("md/distributed/"),
-    },
-  ],
+  // "/md/distributed/": [
+  //   {
+  //     text: "test模块",
+  //     items: getItemsByPath("md/distributed/"),
+  //   },
+  // ],
 };
 
-export default sidebar2;
+getItemsByPath("docs/md/Test/");
+export default sidebar;

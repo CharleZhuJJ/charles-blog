@@ -2,11 +2,11 @@ const nav = [
   {
     text: "笔记",
     items: [
-      {
-        text: "分布式",
-        link: "/md/distributed/",
-        activeMatch: "/md/distributed/",
-      },
+      // {
+      //   text: "分布式",
+      //   link: "/md/distributed/",
+      //   activeMatch: "/md/distributed/",
+      // },
       {
         text: "测试",
         link: "/md/Test/",
