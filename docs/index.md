@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: home
 showArticleMetadata: false
 ---
 
@@ -8,11 +8,9 @@ showArticleMetadata: false
 </script>
 
 <div class="wrap">
-<div class="banner">
+<!-- <div class="banner">
 welcome
-</div>
-    <div class="box1">111</div>
-    <div style="width:100%; height:500px;border:1px solid skyblue">222</div>
+</div> -->
 </div>
 
 <style lang="less">
