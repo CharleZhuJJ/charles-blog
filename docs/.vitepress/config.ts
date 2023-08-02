@@ -4,7 +4,7 @@ import themeConfig from "./config/themeConfig";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "小朱杂记",
+  title: "hello world",
   description: "My Document",
   base: "/charles-blog/",
   lang: "zh-CN",
