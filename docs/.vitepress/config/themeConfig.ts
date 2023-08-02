@@ -22,8 +22,7 @@ const themeConfig: DefaultTheme.Config = {
   },
   // 搜索配置
   search: {
-    provider: "algolia",
-    options: algoliaSearchOptions,
+    provider: "local",
   },
 };
 export default themeConfig;
