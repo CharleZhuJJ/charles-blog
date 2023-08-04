@@ -2,13 +2,6 @@
 title: 解决 Maven 传递依赖污染的问题
 author: charles Chu
 date: 2023/02/03
-categories:
-  - Bug万象集
-tags:
-  - Maven
-  - Java
-showComment: false
-aside: true
 isOriginal: true
 ---
 

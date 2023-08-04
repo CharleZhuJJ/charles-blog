@@ -28,6 +28,10 @@ const nav = [
       },
     ],
   },
+  {
+    text: "关于我",
+    link: "/md/about/",
+  },
 ];
 
 export default nav;
