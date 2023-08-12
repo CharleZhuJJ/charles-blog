@@ -1,8 +1,12 @@
 ---
+title: Spring注解
+author: Charles Chu
+date: 2021/07/23
+isOriginal: true
 outline: deep
 ---
 
-# Spring注解
+# Spring注解 <Badge text="持续更新" type="warning" />
 ## 元注解
 &emsp;元注解的作用就是负责注解其它注解，Java定义了4个标准的meta-annotation类型，他们被用来提供对其它annotation类型作说明。
 

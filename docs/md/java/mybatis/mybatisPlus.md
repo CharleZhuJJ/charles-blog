@@ -1,3 +1,10 @@
+---
+title: Mybatis-Plus
+author: Charles Chu
+date: 2023/03/04
+isOriginal: true
+---
+
 # Mybatis-Plus
 
 ## Mybatis-plus 配置

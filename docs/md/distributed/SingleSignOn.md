@@ -1,4 +1,11 @@
-# 单点登陆
+---
+title: 单点登陆
+author: Charles Chu
+date: 2021/07/09
+isOriginal: true
+---
+
+# 单点登陆 <Badge text="持续更新" type="warning" />
 
 ## 单系统登陆
 

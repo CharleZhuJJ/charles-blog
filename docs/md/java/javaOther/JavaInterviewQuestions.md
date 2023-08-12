@@ -1,4 +1,11 @@
-# Java面试题
+---
+title: Java面试题
+author: Charles Chu
+date: 2023/02/26
+isOriginal: true
+---
+
+# Java面试题 <Badge text="持续更新" type="warning" />
 
 ## 构造器是否可以重写
 &emsp;  Constructor 不能被 override（重写），但是可以 overload（重载），所以你可以看到⼀个类中有多个构造函数的情况。

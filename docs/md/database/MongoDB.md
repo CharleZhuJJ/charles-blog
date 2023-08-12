@@ -1,3 +1,10 @@
+---
+title: MongoDB
+author: Charles Chu
+date: 2023/07/22
+isOriginal: true
+---
+
 # MongoDB
 
 &emsp; MongoDB中的记录是一个文档，它是一个由字段和值对（field:value）组成的数据结构。

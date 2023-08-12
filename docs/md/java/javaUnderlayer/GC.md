@@ -1,4 +1,11 @@
-# GC
+---
+title: GC
+author: Charles Chu
+date: 2021/12/14
+isOriginal: true
+---
+
+# GC <Badge text="持续更新" type="warning" />
 
 ## Garbage Collector 垃圾收集器(GC)
 

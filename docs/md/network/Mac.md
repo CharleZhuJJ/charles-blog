@@ -1,4 +1,11 @@
-# Mac
+---
+title: Mac
+author: Charles Chu
+date: 2022/09/30
+isOriginal: true
+---
+
+# Mac <Badge text="持续更新" type="warning" />
 
 &emsp; MAC称为物理地址，也叫硬件地址，用来定义网络设备的位置，MAC地址是网卡出厂时设定的，是固定的（但可以通过在设备管理器中或注册表等方式修改，同一网段内的MAC地址必须唯一）。
 

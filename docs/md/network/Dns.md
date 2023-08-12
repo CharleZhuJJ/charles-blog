@@ -1,4 +1,11 @@
-# DNS
+---
+title: DNS
+author: Charles Chu
+date: 2022/09/30
+isOriginal: true
+---
+
+# DNS  <Badge text="持续更新" type="warning" />
 
 &emsp; DNS通过主机名，最终得到该主机名对应的IP地址的过程叫做域名解析（或主机名解析）。
 

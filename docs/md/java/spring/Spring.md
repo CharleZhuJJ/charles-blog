@@ -1,7 +1,7 @@
 ---
-title: 解决 Maven 传递依赖污染的问题
-author: charles Chu
-date: 2023/02/03
+title: Spring 杂叙
+author: Charles Chu
+date: 2021/11/16
 isOriginal: true
 ---
 

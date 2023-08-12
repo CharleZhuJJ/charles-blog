@@ -1,3 +1,10 @@
+---
+title: 会话技术
+author: Charles Chu
+date: 2023/07/15
+isOriginal: true
+---
+
 # 会话技术
 
 1. 会话：一次会话中包含多次请求和响应。

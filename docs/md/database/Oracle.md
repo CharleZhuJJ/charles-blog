@@ -1,4 +1,11 @@
-# Oracle
+---
+title: Oracle
+author: Charles Chu
+date: 2021/06/07
+isOriginal: true
+---
+
+# Oracle <Badge text="持续更新" type="warning" />
 
 ## Oracle体系结构
 &emsp; Oracle数据库可以是单实例，也可以是多实例（即RAC）。

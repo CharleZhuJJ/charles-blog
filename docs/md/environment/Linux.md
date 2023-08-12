@@ -1,3 +1,10 @@
+---
+title: Linux
+author: Charles Chu
+date: 2022/03/25
+isOriginal: true
+---
+
 # Linux
 
 ## Linux目录结构

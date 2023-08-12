@@ -1,3 +1,10 @@
+---
+title: Mybatis
+author: Charles Chu
+date: 2021/09/14
+isOriginal: true
+---
+
 # Mybatis
 
 ## Mybatis缓存

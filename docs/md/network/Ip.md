@@ -1,4 +1,11 @@
-# IP
+---
+title: IP
+author: Charles Chu
+date: 2022/09/30
+isOriginal: true
+---
+
+# IP <Badge text="持续更新" type="warning" />
 
 - IP地址是以网络号和主机号来标示网络上的主机的，我们把网络号相同的主机称之为本地网络，网络号不相同的主机称之为远程网络主机
 - 本地网络中的主机可以直接相互通信；远程网络中的主机要相互通信必须通过本地网关（Gateway）来传递转发数据。

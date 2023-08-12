@@ -1,3 +1,10 @@
+---
+title: 哈希（Hash）
+author: Charles Chu
+date: 2021/06/06
+isOriginal: true
+---
+
 # 哈希（Hash）
 
 &emsp; 哈希表的出现是为了解决链表访问不快速的弱点

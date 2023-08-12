@@ -1,3 +1,10 @@
+---
+title: Docker
+author: Charles Chu
+date: 2022/02/20
+isOriginal: true
+---
+
 # Docker
 
 &emsp; Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上；容器是完全使用沙箱机制，相互隔离；容器性能开销极低。

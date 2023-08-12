@@ -1,8 +1,11 @@
 ---
 title: 分布式系统
+author: Charles Chu
+date: 2022/09/22
+isOriginal: true
 ---
 
-# 分布式系统
+# 分布式系统 <Badge text="持续更新" type="warning" />
 
 &emsp; 分布式系统是部分在不同的节点上，通过网络协同工作的系统
 

@@ -1,4 +1,11 @@
-# Redis
+---
+title: Redis
+author: Charles Chu
+date: 2021/09/12
+isOriginal: true
+---
+
+# Redis  <Badge text="持续更新" type="warning" />
 &emsp; Redis (REmote DIctionary Server) 是用C语言开发的一个开源的高性能键值对（key-value）数据库。
 
 ## 特征

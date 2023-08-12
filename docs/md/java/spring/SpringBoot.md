@@ -1,4 +1,11 @@
-# SpringBoot
+---
+title: SpringBoot
+author: Charles Chu
+date: 2023/07/01
+isOriginal: true
+---
+
+# SpringBoot <Badge text="持续更新" type="warning" />
 
 ## SpringBoot 的 starters（场景启动器）
 

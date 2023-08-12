@@ -1,4 +1,11 @@
-# 网关
+---
+title: 网关
+author: Charles Chu
+date: 2022/09/30
+isOriginal: true
+---
+
+# 网关 <Badge text="持续更新" type="warning" />
 
 &emsp; 网关实质上是一个网络通向其他网络的IP地址。
 

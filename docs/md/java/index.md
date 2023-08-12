@@ -1,4 +1,11 @@
-# Java 杂叙
+---
+title: Java
+author: Charles Chu
+date: 2023/02/26
+isOriginal: true
+---
+
+# Java  <Badge text="持续更新" type="warning" />
 
 ## Java
 

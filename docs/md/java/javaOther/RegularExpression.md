@@ -1,3 +1,10 @@
+---
+title: 正则表达式
+author: Charles Chu
+date: 2023/02/26
+isOriginal: true
+---
+
 # 正则表达式（RegExp）
 &emsp; 定义字符串的组成规则
 

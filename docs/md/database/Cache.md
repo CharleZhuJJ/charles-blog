@@ -1,3 +1,10 @@
+---
+title: 缓存
+author: Charles Chu
+date: 2021/12/15
+isOriginal: true
+---
+
 # 缓存
 
 ## 哪类数据适合缓存

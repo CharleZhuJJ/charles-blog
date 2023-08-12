@@ -1,3 +1,10 @@
+---
+title: Synchronized
+author: Charles Chu
+date: 2021/12/23
+isOriginal: true
+---
+
 # Synchronized
 
 &emsp;  synchronized关键字可以修饰方法，也可以修饰代码块。

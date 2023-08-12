@@ -1,3 +1,10 @@
+---
+title: Shell
+author: Charles Chu
+date: 2022/03/24
+isOriginal: true
+---
+
 # Shell
 
 Shell 是一个命令行解释器，它为用户提供了一个向 Linux 内核发送请求以便运行程序的界面系统级程序，用户可以用 Shell 来启动、挂起、停止甚至是编写一些程序.
