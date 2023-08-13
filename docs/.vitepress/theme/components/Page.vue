@@ -5,15 +5,15 @@
     <div class="label">学习、思考、编写，我的 coding 生活</div>
     <img src="/public/common/sub-title.png" class="sub-title" />
     <div class="links-list">
-      <a href="/md/java/" class="link">
+      <a href="/charles-blog/md/java/" class="link">
         <p>💻 Java</p>
         <span>跨平台的高级编程语言</span>
       </a>
-      <a href="/md/database/" class="link">
+      <a href="/charles-blog/md/database/" class="link">
         <p>🖥️ 数据库</p>
         <span>用于存储和管理数据的软件系统</span>
       </a>
-      <a href="/md/network/" class="link">
+      <a href="/charles-blog/md/network/" class="link">
         <p>📡 网络</p>
         <span>实现计算机网络的各种技术和协议</span>
       </a>
