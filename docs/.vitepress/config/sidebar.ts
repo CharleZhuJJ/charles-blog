@@ -121,6 +121,8 @@ const sidebar = {
       items: [
         {text: "网络模型", link: "/md/network/Model"},
         {text: "HTTP", link: "/md/network/Http"},
+        {text: "HTTPS", link: "/md/network/Https"},
+        {text: "TCP", link: "/md/network/Tcp"},
         {text: "IP", link: "/md/network/Ip"},
         {text: "MAC", link: "/md/network/Mac"},
         {text: "网关", link: "/md/network/GateWay"},
