@@ -128,6 +128,7 @@ const sidebar = {
         {text: "DNS", link: "/md/network/Dns"},
         {text: "会话技术", link: "/md/network/ConversationTechnolog"},
         {text: "常见的网络设备", link: "/md/network/NetworkDevices"},
+        {text: "负载均衡", link: "/md/network/LoadBalance"},
       ]
     },
   ],
