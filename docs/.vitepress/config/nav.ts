@@ -21,6 +21,11 @@ const nav = [
     activeMatch: "/md/database/",
   },
   {
+    text: "中间件",
+    link: "/md/middleware/",
+    activeMatch: "/md/middleware/",
+  },
+  {
     text: "网络",
     link: "/md/network/",
     activeMatch: "/md/network/",

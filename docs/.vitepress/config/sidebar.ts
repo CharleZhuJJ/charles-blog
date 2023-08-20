@@ -150,6 +150,16 @@ const sidebar = {
       items: getItemsByPath("docs/md/distributed/"),
     },
   ],
+  "/md/middleware/": [
+    {
+      text: "中间件",
+      link: "/md/middleware/",
+      // items: getItemsByPath("docs/md/middleware/"),
+      items: [
+        {text: "Nginx", link: "/md/middleware/Nginx"},
+      ]
+    },
+  ],
 };
 
 export default sidebar;
