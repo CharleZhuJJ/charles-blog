@@ -125,9 +125,9 @@ const sidebar = {
         {text: "TCP", link: "/md/network/Tcp"},
         {text: "IP", link: "/md/network/Ip"},
         {text: "MAC", link: "/md/network/Mac"},
-        {text: "网关", link: "/md/network/GateWay"},
         {text: "DNS", link: "/md/network/Dns"},
         {text: "会话技术", link: "/md/network/ConversationTechnolog"},
+        {text: "常见的网络设备", link: "/md/network/NetworkDevices"},
       ]
     },
   ],

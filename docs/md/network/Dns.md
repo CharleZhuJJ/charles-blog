@@ -7,6 +7,8 @@ isOriginal: true
 
 # DNS  <Badge text="持续更新" type="warning" />
 
+&emsp; 域名系统（Domain Name System，缩写：DNS）是互联网的一项服务。它作为将域名和IP地址相互映射的一个分布式数据库，能够使人更方便地访问互联网。
+
 &emsp; DNS通过主机名，最终得到该主机名对应的IP地址的过程叫做域名解析（或主机名解析）。
 
 &emsp; 通俗的讲，我们更习惯于记住一个网站的名字，www.baidu.com，而不是记住它的ip地址，比如：167.23.10.2
