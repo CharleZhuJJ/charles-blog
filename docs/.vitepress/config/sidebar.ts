@@ -80,6 +80,7 @@ const sidebar = {
           collapsed: true,
           items: [
             { text: "Java8", link: "/md/java/javaOther/Java8" },
+            { text: "锁", link: "/md/java/javaOther/Lock" },
             { text: "Synchronized", link: "/md/java/javaOther/Synchronized" },
             { text: "浅谈设计模式", link: "/md/java/javaOther/DesignPatterns" },
             { text: "进程，线程，线程池，调度",link: "/md/java/javaOther/Thread" },
