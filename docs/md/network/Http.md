@@ -308,3 +308,124 @@ response.setDateHeader(“Expires”,0);// 在代理服务器端防止缓冲
 - 禁止对主机的非开放服务的访问
 - 限制特定IP地址的访问
 - 启用防火墙的防DDoS的属性
+
+## Java实现HTTP请求方式
+
+### HTTP请求实现过程
+- GET
+    - 创建远程连接
+    - 设置连接方式（get、post、put…）
+    - 设置连接超时时间
+    - 设置响应读取时间
+    - 发起请求
+    - 获取请求数据
+    - 关闭连接
+- POST
+    - 创建远程连接
+    - 设置连接方式（get、post、put。。。）
+    - 设置连接超时时间
+    - 设置响应读取时间
+    - 当向远程服务器传送数据/写数据时，需要设置为true（setDoOutput）
+    - 当前向远程服务读取数据时，设置为true，该参数可有可无（setDoInput）
+    - 设置传入参数的格式:（setRequestProperty）
+    - 设置鉴权信息：Authorization:（setRequestProperty）
+    - 设置参数
+    - 发起请求
+    - 获取请求数据
+    - 关闭连接
+
+### 1、HttpURLConnection类
+&emsp; HttpURLConnection 是 Java 标准库中用来发送 HTTP 请求和接收 HTTP 响应的类。
+
+&emsp; 它预先定义了一些方法，如 setRequestMethod()、setRequestProperty() 和 getResponseCode()，方便开发者自由地控制请求和响应。
+```java
+import java.net.*;
+import java.io.*;
+
+public class HttpURLConnectionExample {
+    private static HttpURLConnection con;
+
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("https://www.example.com");
+        con = (HttpURLConnection) url.openConnection();
+        con.setRequestMethod("GET");
+
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuffer content = new StringBuffer();
+        while ((inputLine = in.readLine()) != null) {
+            content.append(inputLine);
+        }
+        in.close();
+        con.disconnect();
+
+        System.out.println(content.toString());
+    }
+}
+```
+
+### 2、HttpClient库
+&emsp; HttpClient 是一个 HTTP 客户端库，提供了向 HTTP 服务器发送请求和处理响应的方法。
+
+&emsp; 它支持多种请求协议，如 GET、POST 等，并允许开发者自由地设置请求头、请求参数、连接池等。HttpClient 还提供了基于线程池的异步请求处理方式。
+```java
+public class HttpClientExample {
+    public static void main(String[] args) throws Exception {
+        CloseableHttpClient httpclient = HttpClients.createDefault();
+        HttpGet httpget = new HttpGet("https://www.example.com");
+        CloseableHttpResponse response = httpclient.execute(httpget);
+
+        try {
+            HttpEntity entity = response.getEntity();
+            String result = EntityUtils.toString(entity);
+            EntityUtils.consume(entity);
+
+            System.out.println(result);
+        } finally {
+            response.close();
+        }
+    }
+}
+```
+
+### 3、OkHttp库
+&emsp; Okhttp 是由 Square 公司开发的一款轻量级网络请求库，支持普通的 HTTP/1.1 和 SPDY，可与 Retrofit 等网络请求框架搭配使用。
+```java
+public class OkhttpExample {
+    private static final OkHttpClient client = new OkHttpClient();
+
+    public static void main(String[] args) throws IOException {
+        Request request = new Request.builder()
+         .url("https://www.example.com")
+         .build();
+        try (Response response = client.newCall(request).execute()) {
+            String result = response.body().string();
+            System.out.println(result);
+        }
+    }
+}
+```
+
+### 4、Spring的RestTemplate
+&emsp; RestTemplate 是 Spring 库中用于访问 REST API 的类，它基于 HttpMessageConverter 接口，可以将 Java 对象转换为请求参数或响应内容。
+
+&emsp; RestTemplate 还支持各种 HTTP 请求方法、请求头部定制、文件上传和下载等操作。
+```java
+public class HttpTemplate {
+    public static String httpGet(String url) {
+        RestTemplate restTemplate = new RestTemplate();
+        String result = restTemplate.exchange(url, HttpMethod.GET, null, String.class).getBody();
+        return result;
+    }
+
+    public static String httpPost(String url, String name) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.postForEntity(url, name, String.class).getBody();
+    }
+
+    public static void main(String str[]) {
+        System.out.println(HttpTemplate.httpGet("https://www.example.com"));
+        System.out.println(HttpTemplate.httpPost("https://www.example.com", "ming"));
+    }
+}
+```

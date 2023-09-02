@@ -190,6 +190,24 @@ public class ConfigBeanProp {
     private String wife;
 }
 ```
+### 3、PropertySource注解
+```yaml
+realName=tian3
+```
+```java
+@RestController
+@RequestMapping("/propertySource")
+@PropertySource("classpath:custom.properties")
+public class PropertySourceController {
+
+    @Value("${realName}")
+    private String realName;
+    @GetMapping("/index")
+    public String test() {
+        return realName;
+    }
+}
+```
 
 ## SpringBoot 中实现跨域的 5 种方式:
 
