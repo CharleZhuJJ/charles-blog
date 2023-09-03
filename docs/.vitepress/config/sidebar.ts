@@ -159,6 +159,7 @@ const sidebar = {
       items: [
         {text: "Nginx", link: "/md/middleware/Nginx"},
         {text: "RabbitMQ", link: "/md/middleware/RabbitMQ"},
+        {text: "Zookeeper", link: "/md/middleware/Zookeeper"},
       ]
     },
   ],
