@@ -13,6 +13,6 @@ export default defineConfig({
   markdown,
   themeConfig,
   head: [
-    ['link',{rel:'icon',href: '/public/common/avatar.png'}]
+    ['link',{rel:'icon',href: '/public/common/avatar.ico'}]
   ],
 });
