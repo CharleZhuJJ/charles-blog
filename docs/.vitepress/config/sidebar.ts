@@ -158,8 +158,9 @@ const sidebar = {
       // items: getItemsByPath("docs/md/middleware/"),
       items: [
         {text: "Nginx", link: "/md/middleware/Nginx"},
-        {text: "RabbitMQ", link: "/md/middleware/RabbitMQ"},
+        {text: "RabbitMQ", link: "/md/middleware/Rabbitmq"},
         {text: "Zookeeper", link: "/md/middleware/Zookeeper"},
+        {text: "Arthas", link: "/md/middleware/Arthas"},
       ]
     },
   ],
