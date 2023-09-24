@@ -1124,3 +1124,55 @@ m1\r\n
 $2\r\n
 m2\r\n
 ```
+
+## Redis 的发布与订阅
+### 发布与订阅简述
+&emsp; Redis提供了基于“发布/订阅”模式的消息机制。此种模式下，消息发布者和订阅者不进行直接通信，发布者客户端向指定的频道（channel） 发布消息，订阅该频道的每个客户端都可以收到该消息，Redis提供了若干命令支持该功能。
+![PublishSubscription](/public/database/redis/PublishSubscription.png)
+
+### 使用场景
+&emsp; 聊天室、公告牌、服务之间利用消息解耦都可以使用发布订阅模式
+
+### 发布与订阅命令
+
+#### 订阅消息
+```shell
+127.0.0.1:6379> subscribe channel [channel ...]
+Reading messages... (press Ctrl-C to quit)
+1) "subscribe"
+2) "channel"
+3) (integer) 1		# 返回值为当前已订阅的频道数量
+
+# 以下是客户端接收到的订阅消息
+1) "message"
+2) "channel"
+3) "hello"
+```
+
+#### 发布消息
+```shell
+127.0.0.1:6379> publish channel "hello"
+(integer) 1		# 返回值为订阅当前频道的客户端数量
+```
+
+#### 退订频道
+```shell
+127.0.0.1:6379> unsubscribe pattern [pattern ...]
+# 返回值为当前客户端订阅的频道和模式的数量
+```
+
+#### 按模式订阅频道
+&emsp; 每个模式以 * 作为匹配符，比如 it* 匹配所有以 it 开头的频道( it.news 、 it.blog 、 it.tweets 等等)， news.* 匹配所有以 news. 开头的频道( news.it 、news.global.today 等)，诸如此类。
+```shell
+127.0.0.1:6379> psubscribe pattern [pattern ...]
+```
+
+#### 按模式退订频道
+```shell
+127.0.0.1:6379> punsubscribe pattern [pattern ...]
+# 返回值为当前客户端订阅的频道和模式的数量
+```
+
+### 订阅命令注意事项
+- 客户端在执行订阅命令之后进入了订阅状态，只能接收 subscribe、psubscribe、 unsubscribe、 punsubscribe 的四个命令。
+- 新开启的订阅客户端，无法收到该频道之前的消息，因为 Redis 不会对发布的消息进行持久化
