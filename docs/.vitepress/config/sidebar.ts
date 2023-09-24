@@ -161,6 +161,8 @@ const sidebar = {
         {text: "RabbitMQ", link: "/md/middleware/Rabbitmq"},
         {text: "Zookeeper", link: "/md/middleware/Zookeeper"},
         {text: "Arthas", link: "/md/middleware/Arthas"},
+        {text: "JMS", link: "/md/middleware/Jms"},
+        {text: "ActiveMQ", link: "/md/middleware/ActiveMq"},
       ]
     },
   ],
