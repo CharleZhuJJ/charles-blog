@@ -156,6 +156,19 @@ public String[] selectImports(AnnotationMetadata annotationMetadata) {
 
 &emsp; 注解用于标注处理特定类型异常类所抛出异常的方法。当控制器中的方法抛出异常时，Spring 会自动捕获异常，并将捕获的异常信息传递给被@ExceptionHandler 标注的方法。
 
+## SpringBoot配置加载顺序
+&emsp; 常用的Spring Boot配置形式及其加载顺序（优先级由高到低）
+1. 命令行参数
+2. 来自 java:comp/env 的 JNDI 属性
+3. Java 系统属性（System.getProperties()）
+4. 操作系统环境变量
+5. RandomValuePropertySource 配置的 random.* 属性值
+6. 配置文件（YAML文件、Properties 文件）
+7. @Configuration 注解类上的 @PropertySource 指定的配置文件
+8. 通过SpringApplication.setDefaultProperties 指定的默认属性
+
+&emsp; 以上所有形式的配置都会被加载，当存在相同配置内容时，高优先级的配置会覆盖低优先级的配置；存在不同的配置内容时，高优先级和低优先级的配置内容取并集，共同生效，形成互补配置。
+
 ## springboot 读取配置文件的注解
 
 ### 1、@Value
