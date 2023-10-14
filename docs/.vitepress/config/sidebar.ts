@@ -163,6 +163,7 @@ const sidebar = {
         {text: "Arthas", link: "/md/middleware/Arthas"},
         {text: "JMS", link: "/md/middleware/Jms"},
         {text: "ActiveMQ", link: "/md/middleware/ActiveMq"},
+        {text: "Kafka", link: "/md/middleware/Kafka"},
       ]
     },
   ],
