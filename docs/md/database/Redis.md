@@ -628,6 +628,40 @@ discard
 2. 运行错误：指命令格式正确，但是无法正确的执行。例如对list进行incr操作；
     - 处理结果：能够正确运行的命令会执行，运行错误的命令不会被执行，已经执行完毕的命令对应的数据不会自动回滚，需要程序员自己在代码中实现回滚。
 
+## Redis常见的应用场景
+
+### 缓存（Cache）
+&emsp; 在该场景下，有一些存储于数据库中的数据会被频繁访问，如果频繁的访问数据库，数据库负载会升高，同时由于数据库IO比较慢，应用程序的响应会比较差。此时，如果引入Redis来存储这些被频繁访问的数据，就可以有效的降低数据库的负载，同时提高应用程序的请求响应。
+![Cache](/public/database/redis/Cache.png)
+
+### 会话存储（Session）
+&emsp; 使用Redis来存储会话（Session）数据，可以实现在无状态的服务器之间共享用户相关的状态数据数据。
+
+&emsp; 当用户登录Web应用时候，将会话数据存储于Redis，并将唯一的会话ID（Session ID）返回到客户端的Cookie中。当用户再向应用发送请求时，会将此会话ID包含在请求中。无状态的Web服务器，根据这个会话ID从Redis中搜索相关的会话数据来进一步请求处理。
+![Session](/public/database/redis/Session.png)
+
+### 分布式锁（Distributed Lock）
+&emsp; 当我们在应用中部署了多个节点，这些节点需要操作同一个资源的时候会存在竞争。此时，我们可以使用Redis来作为分布式锁，以协调多个节点对共享资源的操作。
+![DistributedLock](/public/database/redis/DistributedLock.png)
+
+&emsp; 这里主要是用Redis的原子操作命令：SETNX，该命令仅允许key不存在的时候才能设置key。
+
+&emsp; 下图展示了一个简单用例。Client 1通过SETNX命令尝试创建lock 1234abcd。如果当前还没有这个key，那么将返回1。Client 1获得锁，就可以执行对共享资源的操作，操作完成之后，删除刚刚创建的lock（释放分布式锁）。如果Client 1在执行SETNX命令的时候，返回了0，说明有其他客户端占用了这key，那么等待一段时间（等其他节点释放）之后再尝试。
+![SetNx](/public/database/redis/SetNx.png)
+
+### 速率限制器（Rate Limiter）
+&emsp; 由于Redis提供了计数器功能，所以我们可以通过该能力，配合超时时间，来实现速率限制器，最常见的场景就是服务端是用的请求限流。
+![RateLimiter](/public/database/redis/RateLimiter.png)
+
+&emsp; 根据用户id或者ip来作为key，使用INCR命令来记录用户的请求数量。然后将该请求数量与允许的请求上限数量做比较，只有低于限制的时候，才会执行请求处理。如果超过限制，就拒绝请求。
+
+&emsp; 同时，请求数量的计数器需要设置一个时间窗口，比如：1分钟。也就是没过一分钟时间，计数器将被清零，重新计数。所以，当一个时间窗口中被限流之后，等到下一个时间窗口，就能恢复继续请求。以实现限制速率的效果。
+
+### 排行榜（Rank/Leaderboard）
+&emsp; 由于Redis提供了排序集合（Sorted Sets）的功能，所以很多游戏应用采用Redis来实现各种排行榜功能。
+![Rank](/public/database/redis/Rank.png)
+
+
 
 ## 锁
 
