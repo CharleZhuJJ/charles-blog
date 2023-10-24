@@ -16,6 +16,9 @@
   --vp-c-brand-darker: #2099c5;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
   --vp-c-bg: #faf6f1;
+  --home-list-bg: #efefef;
+  --home-list-text1: var(--vp-c-text-1);
+  --home-list-text2: var(--vp-c-text-2)
 }
 
 /**
@@ -83,6 +86,9 @@
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
   --vp-c-bg: #202020;
   --vp-c-text-2: #7a7a7a;
+  --home-list-bg: #6393eb;
+  --home-list-text1: #fff;
+  --home-list-text2: #fff;
 }
 
 /**
