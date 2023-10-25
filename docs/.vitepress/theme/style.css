@@ -18,7 +18,9 @@
   --vp-c-bg: #faf6f1;
   --home-list-bg: #efefef;
   --home-list-text1: var(--vp-c-text-1);
-  --home-list-text2: var(--vp-c-text-2)
+  --home-list-text2: var(--vp-c-text-2);
+  --home-list-border: #c7c7c7;
+  --home-list-shadow: rgba(211,211,211);
 }
 
 /**
@@ -89,6 +91,8 @@
   --home-list-bg: #6393eb;
   --home-list-text1: #fff;
   --home-list-text2: #fff;
+  --home-list-border: #6393eb;
+  --home-list-shadow: rgba(211,211,211,0.4);
 }
 
 /**

@@ -54,6 +54,23 @@
       <img src="/public/common/new.png" />
       最近更新
     </div>
+    <div class="new-list">
+      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
+        >new1</a
+      >
+      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
+        >new1</a
+      >
+      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
+        >new1</a
+      >
+      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
+        >new1</a
+      >
+      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
+        >new1</a
+      >
+    </div>
   </div>
 </template>
 
@@ -84,7 +101,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    padding-top: 56px;
+    padding-top: 48px;
     overflow: auto;
     .header {
       margin-bottom: 72px;
@@ -98,7 +115,7 @@
       }
       .title {
         transform: scale(0.8);
-        margin-top: 16px;
+        margin-top: 8px;
         font-size: 36px;
         font-weight: 1000;
         font-family: font1;
@@ -130,7 +147,7 @@
       grid-template-columns: repeat(3, 1fr);
       width: 60%;
       margin-top: 16px;
-      margin-bottom: 48px;
+      margin-bottom: 72px;
       @media (max-width: 640px) {
         width: 100%;
         padding: 0 24px;
@@ -158,6 +175,24 @@
           font-size: 14px;
           font-weight: 400;
           color: var(--home-list-text2);
+        }
+      }
+    }
+    .new-list {
+      margin-top: 16px;
+      margin-bottom: 48px;
+      .link {
+        display: block;
+        width: 360px;
+        padding: 6px 12px;
+        margin-bottom: 12px;
+        font-size: 14px;
+        font-weight: 500;
+        border: 1px solid var(--home-list-border);
+        border-radius: 6px;
+        font-style: italic;
+        &:hover {
+          box-shadow: 0 4px 10px var(--home-list-shadow);
         }
       }
     }
