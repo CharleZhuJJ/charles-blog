@@ -12,5 +12,5 @@ export default defineConfig({
   lastUpdated: true,
   markdown,
   themeConfig,
-  head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+  head: [["link", { rel: "icon", href: "/charles-blog/favicon.ico" }]],
 });

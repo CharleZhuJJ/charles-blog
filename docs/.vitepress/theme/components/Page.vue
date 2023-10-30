@@ -3,7 +3,7 @@
     <div class="header">
       <img src="/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
-      <div class="label">学习、思考、编写，我的 coding 生活-2</div>
+      <div class="label">学习、思考、编写，我的 coding 生活</div>
     </div>
     <div class="sub-title">
       <img src="/common/entry.png" />
@@ -13,7 +13,11 @@
       <a href="/charles-blog/md/java/" class="link">
         <p>
           <img
-            :src="`${isDark ? '/common/java-dark.png' : '/common/java.png'}`"
+            :src="`${
+              isDark
+                ? '/charles-blog/commoon/java-dark.png'
+                : '/charles-blog/common/java.png'
+            }`"
           />
           Java
         </p>
@@ -24,8 +28,8 @@
           <img
             :src="`${
               isDark
-                ? '/common/icon-database-dark.png'
-                : '/common/icon-database.png'
+                ? '/charles-blog/common/icon-database-dark.png'
+                : '/charles-blog/common/icon-database.png'
             }`"
           />
           数据库
@@ -37,10 +41,11 @@
           <img
             :src="`${
               isDark
-                ? '/common/icon-network-dark.png'
-                : '/common/icon-network.png'
+                ? '/charles-blog/common/icon-network-dark.png'
+                : '/charles-blog/common/icon-network.png'
             }`"
           />
+          <img src="/common/icon-network-dark.png" />
           网络
         </p>
         <span>实现计算机网络的各种技术和协议</span>
