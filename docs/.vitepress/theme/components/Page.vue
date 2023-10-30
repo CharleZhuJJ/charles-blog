@@ -1,18 +1,24 @@
 <template>
   <div class="home-page">
     <div class="header">
-      <img src="/img/avatar.png" class="avatar" />
+      <img src="/charles-blog/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
       <div class="label">学习、思考、编写，我的 coding 生活-2</div>
     </div>
     <div class="sub-title">
-      <img src="/img/entry.png" />
+      <img src="/charles-blog/common/entry.png" />
       快捷入口
     </div>
     <div class="links-list">
       <a href="/charles-blog/md/java/" class="link">
         <p>
-          <img :src="`${isDark ? '/java-dark.png' : '/java.png'}`" />
+          <img
+            :src="`${
+              isDark
+                ? '/charles-blog/commoon/java-dark.png'
+                : '/charles-blog/common/java.png'
+            }`"
+          />
           Java
         </p>
         <span>跨平台的高级编程语言</span>
@@ -22,8 +28,8 @@
           <img
             :src="`${
               isDark
-                ? '/common/icon-database-dark.png'
-                : '/common/icon-database.png'
+                ? '/charles-blog/common/icon-database-dark.png'
+                : '/charles-blog/common/icon-database.png'
             }`"
           />
           数据库
@@ -35,8 +41,8 @@
           <img
             :src="`${
               isDark
-                ? '/common/icon-network-dark.png'
-                : '/common/icon-network.png'
+                ? '/charles-blog/common/icon-network-dark.png'
+                : '/charles-blog/common/icon-network.png'
             }`"
           />
           网络
@@ -45,7 +51,7 @@
       </a>
     </div>
     <div class="sub-title">
-      <img src="/common/new.png" />
+      <img src="/charles-blog/common/new.png" />
       最近更新
     </div>
     <div class="new-list">
