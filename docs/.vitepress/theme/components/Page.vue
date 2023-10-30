@@ -12,9 +12,7 @@
     <div class="links-list">
       <a href="/charles-blog/md/java/" class="link">
         <p>
-          <img
-            :src="`${isDark ? '/common/java-dark.png' : '/common/java.png'}`"
-          />
+          <img :src="`${isDark ? '/java-dark.png' : '/java.png'}`" />
           Java
         </p>
         <span>跨平台的高级编程语言</span>
