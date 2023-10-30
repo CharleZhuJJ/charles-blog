@@ -1,12 +1,12 @@
 <template>
   <div class="home-page">
     <div class="header">
-      <img src="/charles-blog/common/avatar.png" class="avatar" />
+      <img src="/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
       <div class="label">学习、思考、编写，我的 coding 生活</div>
     </div>
     <div class="sub-title">
-      <img src="/charles-blog/common/entry.png" />
+      <img src="/common/entry.png" />
       快捷入口
     </div>
     <div class="links-list">
@@ -51,7 +51,7 @@
       </a>
     </div>
     <div class="sub-title">
-      <img src="/charles-blog/common/new.png" />
+      <img src="/common/new.png" />
       最近更新
     </div>
     <div class="new-list">
