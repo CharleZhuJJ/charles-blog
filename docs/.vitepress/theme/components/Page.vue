@@ -1,22 +1,20 @@
 <template>
   <div class="home-page">
     <div class="header">
-      <img src="/public/common/avatar.png" class="avatar" />
+      <img src="/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
       <div class="label">学习、思考、编写，我的 coding 生活</div>
     </div>
     <div class="sub-title">
-      <img src="/public/common/entry.png" />
-      快捷入口d
+      <img src="/common/entry.png" />
+      快捷入口
     </div>
     <div class="links-list">
       <a href="/charles-blog/md/java/" class="link">
         <p>
           <img
             :src="`${
-              isDark
-                ? '/public/common/icon-java-dark.png'
-                : '/public/common/icon-java.png'
+              isDark ? '/common/icon-java-dark.png' : '/common/icon-java.png'
             }`"
           />
           Java
@@ -28,8 +26,8 @@
           <img
             :src="`${
               isDark
-                ? '/public/common/icon-database-dark.png'
-                : '/public/common/icon-database.png'
+                ? '/common/icon-database-dark.png'
+                : '/common/icon-database.png'
             }`"
           />
           数据库
@@ -41,8 +39,8 @@
           <img
             :src="`${
               isDark
-                ? '/public/common/icon-network-dark.png'
-                : '/public/common/icon-network.png'
+                ? '/common/icon-network-dark.png'
+                : '/common/icon-network.png'
             }`"
           />
           网络
@@ -51,7 +49,7 @@
       </a>
     </div>
     <div class="sub-title">
-      <img src="/public/common/new.png" />
+      <img src="/common/new.png" />
       最近更新
     </div>
     <div class="new-list">
@@ -84,7 +82,7 @@
   @font-face {
     // 锐字逼格青春体简2.0
     font-family: "font1";
-    src: url(/public/font1.ttf);
+    src: url(/font1.ttf);
   }
   @keyframes rotate {
     0% {
