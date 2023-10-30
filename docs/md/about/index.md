@@ -11,7 +11,7 @@ lastUpdated: false
 <div class="wrap">
     <div class="introduce">
         <!-- 头像 -->
-        <div class="avatar"><img src="/public/common/avatar.png" /></div>
+        <div class="avatar"><img src="/public/img/avatar.png" /></div>
         <div class="content">
             <pre>大家好，我是小朱，目前在招行就职。是一个热爱篮球，热爱运动的码农。</pre>
             <pre>这个博客主要记录我编程以来的知识点总结,也会分享工作中遇到的技术问题及解决方案。</pre>
