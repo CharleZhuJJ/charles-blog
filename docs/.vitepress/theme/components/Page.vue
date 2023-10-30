@@ -3,7 +3,7 @@
     <div class="header">
       <img src="/charles-blog/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
-      <div class="label">学习、思考、编写，我的 coding 生活-2</div>
+      <div class="label">学习、思考、编写，我的 coding 生活</div>
     </div>
     <div class="sub-title">
       <img src="/charles-blog/common/entry.png" />
