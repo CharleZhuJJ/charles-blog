@@ -6,7 +6,7 @@ import algoliaSearchOptions from "./algoliaSearch";
 const themeConfig: DefaultTheme.Config = {
   nav,
   sidebar,
-  socialLinks: [{ icon: "github", link: "https://github.com/vuejs/vitepress" }],
+  socialLinks: [{ icon: "github", link: "https://github.com/CharleZhuJJ/charles-blog" }],
   outline: {
     level: "deep", // 右侧大纲标题层级
     label: "目录", // 右侧大纲标题文本配置
@@ -22,9 +22,7 @@ const themeConfig: DefaultTheme.Config = {
   },
   // 搜索配置
   search: {
-    provider: "algolia",
-    options: algoliaSearchOptions,
+    provider: "local",
   },
 };
-
 export default themeConfig;

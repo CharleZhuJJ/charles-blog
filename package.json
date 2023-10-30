@@ -9,14 +9,16 @@
     "vitepress": "^1.0.0-beta.2"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs --port 6009",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress build docs && vitepress preview docs",
+    "dev": "vitepress dev docs --port 6009",
+    "build": "vitepress build docs",
+    "preview": "vitepress build docs && vitepress preview docs",
     "deploy": "deploy.sh"
   },
   "dependencies": {
     "@arco-design/web-vue": "^2.47.1",
     "@arco-plugins/vite-vue": "^1.4.5",
+    "fast-glob": "^3.3.0",
+    "gray-matter": "^4.0.3",
     "markdown-it-footnote": "^3.0.3",
     "vue": "^3.3.4"
   }

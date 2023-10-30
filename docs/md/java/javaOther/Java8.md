@@ -1,4 +1,11 @@
-# Java8
+---
+title: Java8
+author: Charles Chu
+date: 2023/02/26
+isOriginal: true
+---
+
+# Java8 <Badge text="持续更新" type="warning" />
 
 ## 函数式接口
 

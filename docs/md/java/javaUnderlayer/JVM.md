@@ -1,4 +1,11 @@
-# JVM
+---
+title: JVM
+author: Charles Chu
+date: 2022/09/28
+isOriginal: true
+---
+
+# JVM <Badge text="持续更新" type="warning" />
 
 &emsp; JVM 是 Java Virtual Machine（Java 虚拟机）的缩写，是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟计算机功能来实现的，JVM 屏蔽了与具体操作系统平台相关的信息，Java 程序只需生成在 Java 虚拟机上运行的字节码，就可以在多种平台上不加修改的运行。JVM 在执行字节码时，实际上最终还是把字节码解释成具体平台上的机器指令执行。
 

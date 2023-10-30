@@ -1,3 +1,10 @@
+---
+title: SpringMVC
+author: Charles Chu
+date: 2023/03/11
+isOriginal: true
+---
+
 # SpringMVC
 
 ![springmvc](/public/java/spring/springMvc.png)

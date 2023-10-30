@@ -2,19 +2,25 @@
  * Customize default theme styling by overriding CSS variables:
  * https://github.com/vuejs/vitepress/blob/main/src/client/theme-default/styles/vars.css
  */
-
+ @import url("https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.6.0/style.min.css");
 /**
  * Colors
  * -------------------------------------------------------------------------- */
 
  :root {
-  --vp-c-brand: #646cff;
-  --vp-c-brand-light: #747bff;
+  --vp-c-brand: #6190e8 ;
+  --vp-c-brand-light: #a27b5c;
   --vp-c-brand-lighter: #9499ff;
   --vp-c-brand-lightest: #bcc0ff;
-  --vp-c-brand-dark: #535bf2;
-  --vp-c-brand-darker: #454ce1;
+  --vp-c-brand-dark: #2099c5;
+  --vp-c-brand-darker: #2099c5;
   --vp-c-brand-dimm: rgba(100, 108, 255, 0.08);
+  --vp-c-bg: #faf6f1;
+  --home-list-bg: #efefef;
+  --home-list-text1: var(--vp-c-text-1);
+  --home-list-text2: var(--vp-c-text-2);
+  --home-list-border: #c7c7c7;
+  --home-list-shadow: rgba(211,211,211);
 }
 
 /**
@@ -41,14 +47,14 @@
   --vp-home-hero-name-color: transparent;
   --vp-home-hero-name-background: -webkit-linear-gradient(
     120deg,
-    #bd34fe 30%,
-    #41d1ff
+    #2099c5  30%,
+    #B6E5F7
   );
 
   --vp-home-hero-image-background-image: linear-gradient(
     -45deg,
-    #bd34fe 50%,
-    #47caff 50%
+    #2099c5  50%,
+    #B2D8D8 50%
   );
   --vp-home-hero-image-filter: blur(40px);
 }
@@ -80,6 +86,13 @@
   --vp-custom-block-tip-border: var(--vp-c-brand);
   --vp-custom-block-tip-text: var(--vp-c-brand-lightest);
   --vp-custom-block-tip-bg: var(--vp-c-brand-dimm);
+  --vp-c-bg: #202020;
+  --vp-c-text-2: #7a7a7a;
+  --home-list-bg: #6393eb;
+  --home-list-text1: #fff;
+  --home-list-text2: #fff;
+  --home-list-border: #6393eb;
+  --home-list-shadow: rgba(211,211,211,0.4);
 }
 
 /**
@@ -87,5 +100,6 @@
  * -------------------------------------------------------------------------- */
 
 .DocSearch {
-  --docsearch-primary-color: var(--vp-c-brand) !important;
+  background: #fff;
+  border-color: #e7e7e7;
 }

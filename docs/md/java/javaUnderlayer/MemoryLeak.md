@@ -1,3 +1,10 @@
+---
+title: 内存泄漏
+author: Charles Chu
+date: 2021/06/17
+isOriginal: true
+---
+
 # 内存泄漏
 
 ## 什么是内存泄漏？

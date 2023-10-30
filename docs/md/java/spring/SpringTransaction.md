@@ -1,3 +1,10 @@
+---
+title: Spring事务
+author: Charles Chu
+date: 2023/03/11
+isOriginal: true
+---
+
 # Spring事务
 
 ## 事务失效情况
@@ -45,7 +52,7 @@ public class OrderServiceImpl implements OrderService {
 }
 ```
 
-#### 4、异常类型错误
+### 4、异常类型错误
 ```java
 // @Service
 public class OrderServiceImpl implements OrderService {
@@ -62,3 +69,17 @@ public class OrderServiceImpl implements OrderService {
 // 这样事务也是不生效的，因为默认回滚的是：RuntimeException，如果你想触发其他异常的回滚，需要在注解上配置一下，如：
 @Transactional(rollbackFor = Exception.class)
 ```
+
+### 5、数据库引擎不支持事务
+&emsp; 以MySQL为例，MyISAM引擎是不支持事务操作的，一般要支持事务都会使用InnoDB引擎，根据MySQL的官方文档说明，从MySQL 5.5.5 开始的默认存储引擎是InnoDB，之前默认的都是MyISAM，所以这一点要值得注意，如果底层引擎不支持事务，那么再怎么设置也没有用。
+
+### 6、没有配置事务管理器
+&emsp; 如果没有配置以下DataSourceTransactionManager数据源事务管理器，那么事务也不会生效
+```java
+@Bean
+public PlatformTransactionManager transactionManager(DataSource dataSource) {
+  return new DataSourceTransactionManager(dataSource);
+}  
+```
+但在 Spring Boot 中只要引入了spring-boot-starter-data-jdbc启动器依赖就会自动配置DataSourceTransactionManager数据源事务管理器，所以 Spring Boot框架不存在这个问题，但在传统的 Spring框架中需要注意。
+

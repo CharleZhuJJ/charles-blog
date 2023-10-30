@@ -12,6 +12,6 @@ git init
 git add -A
 git commit -m 'deploy'
 
-git push -f https://gitee.com/charleschu/blog.git master:gh-pages
+git push -f https://gitee.com/charleschu/charles-blog.git master:gh-pages
 
 cd -

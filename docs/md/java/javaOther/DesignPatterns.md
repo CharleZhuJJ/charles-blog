@@ -1,3 +1,10 @@
+---
+title: 浅谈设计模式
+author: Charles Chu
+date: 2022/12/14
+isOriginal: true
+---
+
 # 浅谈设计模式
 
 ## 创建型模式
