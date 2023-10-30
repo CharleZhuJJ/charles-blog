@@ -67,7 +67,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           BRANCH: pages
-          FOLDER: docs/.vitepress/dist
+          FOLDER: ./docs/.vitepress/dist
 
   # 任务2: 部署 Gitee Pages
   # deploy-gitee-pages:
