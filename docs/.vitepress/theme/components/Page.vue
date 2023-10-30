@@ -3,7 +3,7 @@
     <div class="header">
       <img src="/common/avatar.png" class="avatar" />
       <div class="title">欢迎来到小朱的博客站</div>
-      <div class="label">学习、思考、编写，我的 coding 生活</div>
+      <div class="label">学习、思考、编写，我的 coding 生活-1</div>
     </div>
     <div class="sub-title">
       <img src="/common/entry.png" />
@@ -13,9 +13,7 @@
       <a href="/charles-blog/md/java/" class="link">
         <p>
           <img
-            :src="`${
-              isDark ? '/common/icon-java-dark.png' : '/common/icon-java.png'
-            }`"
+            :src="`${isDark ? '/common/java-dark.png' : '/common/java.png'}`"
           />
           Java
         </p>
