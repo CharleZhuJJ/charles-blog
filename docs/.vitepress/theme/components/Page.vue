@@ -45,6 +45,7 @@
                 : '/charles-blog/common/icon-network.png'
             }`"
           />
+          <img src="/common/icon-network-dark.png" />
           网络
         </p>
         <span>实现计算机网络的各种技术和协议</span>
