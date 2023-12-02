@@ -45,7 +45,6 @@
                 : '/charles-blog/common/icon-network.png'
             }`"
           />
-          <img src="/common/icon-network-dark.png" />
           网络
         </p>
         <span>实现计算机网络的各种技术和协议</span>
@@ -55,21 +54,21 @@
       <img src="/common/new.png" />
       最近更新
     </div>
-    <div class="new-list">
-      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
-        >new1</a
+    <div class="new-list">  
+      <a href="/charles-blog/md/java/javaOther/JavaInterviewQuestions" class="link"
+        >Java面试题</a
       >
-      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
-        >new1</a
+      <a href="/charles-blog/md/middleware/Kafka" class="link"
+        >Kafka</a
       >
-      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
-        >new1</a
+      <a href="/charles-blog/md/database/Redis" class="link"
+        >Redis</a
       >
-      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
-        >new1</a
+      <a href="/charles-blog/md/java/spring/Springboot" class="link"
+        >SpringBoot</a
       >
-      <a href="/charles-blog/md/java/java-basic/java-basic-1/" class="link"
-        >new1</a
+      <a href="/charles-blog/md/middleware/JMS" class="link"
+        >JMS</a
       >
     </div>
   </div>
